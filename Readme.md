@@ -79,7 +79,9 @@ Votre site livré en 7 jours.
 
 👐 Accompagnement humain
 
+
 On vous explique tout. Sans jargon.
+
 
 🔧 Technos modernes
 
