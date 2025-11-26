@@ -1,10 +1,15 @@
-import { Mail, MessageSquare, Headset, BarChart, Globe, Settings, Cloud } from 'lucide-react';
+import { Mail, MessageSquare, ShoppingCart, Headset, BarChart, Globe, Settings, Smartphone, Cloud } from 'lucide-react';
 
 export const services = [
     {
         title: "Développement Web",
         description: "Sites vitrines et e-commerce performants, optimisés pour le SEO et la conversion.",
         icon: Globe
+    },
+    {
+        title: "Applications Mobiles",
+        description: "Solutions mobiles natives et hybrides pour iOS et Android.",
+        icon: Smartphone
     },
     {
         title: "Solutions Cloud",
@@ -16,7 +21,7 @@ export const services = [
 export const packs = [
     {
         title: "Pack Basique",
-        pages: "1–5 pages",
+        pages: "1–3 pages",
         description: "Pour commencer rapidement.",
         features: [
             "Design moderne",
@@ -30,7 +35,7 @@ export const packs = [
     },
     {
         title: "Pack Medium",
-        pages: "Jusqu'à 10 pages",
+        pages: "Jusqu’à 6 pages",
         description: "Le bon équilibre.",
         features: [
             "Design personnalisé",
@@ -43,7 +48,7 @@ export const packs = [
     },
     {
         title: "Pack Plus",
-        pages: "Pages illimitées",
+        pages: "Jusqu’à 10 pages",
         description: "Pour un site complet et professionnel.",
         features: [
             "Design premium",
@@ -86,9 +91,19 @@ export const options = [
         category: "Automatisation & IA",
         items: [
             { name: "Chatbot WhatsApp", price: "79 €" },
-            { name: "Chatbot sur site", price: "129 €" }
+            { name: "Chatbot sur site", price: "129 €" },
+            { name: "Formulaires intelligents", price: "49–99 €" }
         ],
         icon: MessageSquare
+    },
+    {
+        category: "E-commerce (options)",
+        items: [
+            { name: "Activation WooCommerce", price: "59 €" },
+            { name: "Ajout catégories", price: "Sur devis" },
+            { name: "Ajout produits", price: "Sur devis" }
+        ],
+        icon: ShoppingCart
     },
     {
         category: "Support Premium",
