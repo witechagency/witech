@@ -23,34 +23,34 @@ export function ServiceCard({
 }: ServiceCardProps) {
     return (
         <motion.div
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ y: -5 }}
             className={cn(
-                "bg-white rounded-3xl shadow-xl p-8 transition-all duration-300 border border-gray-100",
+                "glass p-8 rounded-3xl transition-all duration-300 group hover:border-blue-500/30",
                 className
             )}
         >
             {Icon && (
-                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600">
-                    <Icon size={24} />
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                    <Icon size={28} className="group-hover:text-purple-600 transition-colors" />
                 </div>
             )}
 
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{title}</h3>
 
             {subtitle && (
-                <p className="text-sm font-medium text-blue-600 mb-4 uppercase tracking-wide">
+                <p className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4 uppercase tracking-wide">
                     {subtitle}
                 </p>
             )}
 
             {price && (
-                <div className="text-2xl font-bold text-gray-900 mb-4">
+                <div className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
                     {price}
                 </div>
             )}
 
             {description && (
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed font-light">
                     {description}
                 </p>
             )}
@@ -58,9 +58,9 @@ export function ServiceCard({
             {features && features.length > 0 && (
                 <ul className="space-y-3">
                     {features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-3 text-gray-600">
-                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
-                            <span className="text-sm">{feature}</span>
+                        <li key={index} className="flex items-start gap-3 text-gray-600 group/item">
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover/item:scale-125 transition-transform" />
+                            <span className="text-sm font-medium">{feature}</span>
                         </li>
                     ))}
                 </ul>
