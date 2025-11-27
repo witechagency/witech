@@ -40,7 +40,7 @@ export function Header() {
                         </a>
                     ))}
                     <a
-                        href="#pricing"
+                        href="#contact"
                         className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20"
                     >
                         Commencer
@@ -77,7 +77,7 @@ export function Header() {
                                 </a>
                             ))}
                             <a
-                                href="#pricing"
+                                href="#contact"
                                 className="bg-blue-600 text-white px-6 py-3 rounded-xl font-medium text-center mt-2"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
