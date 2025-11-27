@@ -12,6 +12,13 @@ interface ContactFormProps {
 
 export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
     const [showSuccess, setShowSuccess] = useState(false);
+    const [formData, setFormData] = useState({
+        nom: "",
+        entreprise: "",
+        numero: "",
+        email: "",
+    });
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
