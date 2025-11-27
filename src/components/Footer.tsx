@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { navLinks } from '../lib/constant';
 
 export function Footer() {
@@ -31,19 +32,19 @@ export function Footer() {
                         <h4 className="font-bold text-gray-900 mb-4">Légal</h4>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">
+                                <Link to="/mentions-legales" className="text-gray-600 hover:text-blue-600 transition-colors">
                                     Mentions légales
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">
+                                <Link to="/confidentialite" className="text-gray-600 hover:text-blue-600 transition-colors">
                                     Politique de confidentialité
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">
+                                <Link to="/cgv" className="text-gray-600 hover:text-blue-600 transition-colors">
                                     CGV
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
