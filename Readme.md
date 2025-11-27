@@ -1,214 +1,73 @@
-# Wi'Tech - Site Web Officiel
+# React + TypeScript + Vite
 
-Site web moderne et performant pour Wi'Tech, agence digitale spécialisée dans la création de sites web.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🚀 Technologies utilisées
+Currently, two official plugins are available:
 
-- **React 19** - Framework JavaScript
-- **Vite 7** - Build tool ultra-rapide
-- **TypeScript** - Typage statique
-- **Tailwind CSS v4** - Framework CSS utility-first
-- **Framer Motion** - Animations fluides
-- **React Router** - Navigation SPA
-- **Supabase** - Base de données et backend
-- **EmailJS** - Envoi d'emails
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 📦 Installation
+## React Compiler
 
-### Prérequis
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- Node.js (version 18 ou supérieure)
-- npm ou yarn
+## Expanding the ESLint configuration
 
-### Étapes d'installation
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-1. **Cloner le projet**
-```bash
-git clone [URL_DU_REPO]
-cd Wi-Tech
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-2. **Installer toutes les dépendances**
-```bash
-npm install
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-Cette commande installera automatiquement toutes les dépendances listées dans `package.json` :
-
-**Dependencies (Production):**
-- `@emailjs/browser` - Service d'envoi d'emails
-- `@supabase/supabase-js` - Client Supabase
-- `clsx` - Utilitaire pour classes CSS conditionnelles
-- `framer-motion` - Bibliothèque d'animations
-- `lucide-react` - Icônes React
-- `react` & `react-dom` - Framework React
-- `react-router-dom` - Routing pour React
-- `tailwind-merge` - Fusion de classes Tailwind
-
-**DevDependencies (Développement):**
-- `@tailwindcss/postcss` - Plugin PostCSS pour Tailwind v4
-- `@vitejs/plugin-react` - Plugin Vite pour React
-- `autoprefixer` - Préfixes CSS automatiques
-- `eslint` - Linter JavaScript/TypeScript
-- `postcss` - Transformateur CSS
-- `tailwindcss` - Framework CSS
-- `typescript` - Compilateur TypeScript
-- `vite` - Build tool
-
-3. **Configurer les variables d'environnement**
-
-Créer un fichier `.env` à la racine du projet :
-
-```env
-# Supabase Configuration
-VITE_SUPABASE_URL=votre_url_supabase
-VITE_SUPABASE_ANON_KEY=votre_cle_supabase
-
-# Admin Dashboard Password
-VITE_ADMIN_PASSWORD=votre_mot_de_passe_admin
-```
-
-4. **Lancer le serveur de développement**
-```bash
-npm run dev
-```
-
-Le site sera accessible sur `http://localhost:5173`
-
-## 🛠️ Scripts disponibles
-
-```bash
-# Développement
-npm run dev          # Lance le serveur de développement
-
-# Production
-npm run build        # Compile le projet pour la production
-npm run preview      # Prévisualise le build de production
-
-# Qualité du code
-npm run lint         # Vérifie le code avec ESLint
-```
-
-## 📁 Structure du projet
-
-```
-Wi-Tech/
-├── public/              # Fichiers statiques
-├── src/
-│   ├── assets/         # Images, fonts, etc.
-│   ├── components/     # Composants réutilisables
-│   │   ├── ContactButton.tsx
-│   │   ├── ContactForm.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Header.tsx
-│   │   ├── Hero.tsx
-│   │   └── ServiceCard.tsx
-│   ├── lib/            # Utilitaires et configuration
-│   │   ├── constant.ts
-│   │   ├── supabase.ts
-│   │   └── utils.ts
-│   ├── page/           # Pages principales
-│   │   ├── Home.tsx
-│   │   └── sections/   # Sections de la page d'accueil
-│   ├── pages/          # Pages de routing
-│   │   ├── admin/
-│   │   │   └── ProspectsAdmin.tsx
-│   │   └── legal/
-│   │       ├── CGV.tsx
-│   │       ├── Confidentialite.tsx
-│   │       └── MentionsLegales.tsx
-│   ├── App.tsx         # Composant racine avec routing
-│   ├── main.tsx        # Point d'entrée
-│   └── index.css       # Styles globaux
-├── .env                # Variables d'environnement (à créer)
-├── .env.example        # Template des variables d'environnement
-├── package.json        # Dépendances et scripts
-├── tailwind.config.js  # Configuration Tailwind
-├── tsconfig.json       # Configuration TypeScript
-└── vite.config.ts      # Configuration Vite
-```
-
-## 🌐 Routes disponibles
-
-- `/` - Page d'accueil
-- `/mentions-legales` - Mentions légales
-- `/cgv` - Conditions générales de vente
-- `/confidentialite` - Politique de confidentialité
-- `/admin` - Dashboard administrateur (protégé par mot de passe)
-
-## 🔐 Dashboard Admin
-
-Pour accéder au dashboard admin :
-1. Naviguez vers `/admin`
-2. Entrez le mot de passe configuré dans `.env` (`VITE_ADMIN_PASSWORD`)
-3. Gérez les prospects (recherche, suppression, etc.)
-
-## 🗄️ Base de données Supabase
-
-Le projet utilise Supabase avec une table `clients` :
-
-**Structure de la table `clients` :**
-- `id` (bigint, primary key)
-- `name` (text)
-- `company` (text)
-- `email` (text)
-- `phone` (text)
-- `pack` (text)
-- `created_at` (timestamp)
-
-## 📧 Configuration EmailJS
-
-Le formulaire de contact utilise EmailJS. Assurez-vous d'avoir :
-- Un compte EmailJS
-- Les templates configurés
-- Les IDs de service et template dans le code
-
-## 🚢 Déploiement
-
-### Build de production
-
-```bash
-npm run build
-```
-
-Les fichiers compilés seront dans le dossier `dist/`.
-
-### Déploiement recommandé
-
-- **Vercel** (recommandé pour React/Vite)
-- **Netlify**
-- **Hostinger**
-- **OVH**
-
-## 🔧 Dépannage
-
-### Erreur "Module not found"
-```bash
-rm -rf node_modules package-lock.json
-npm install
-```
-
-### Erreur Tailwind CSS
-Vérifiez que `@tailwindcss/postcss` est installé :
-```bash
-npm install @tailwindcss/postcss --save-dev
-```
-
-### Erreur Supabase
-Vérifiez vos variables d'environnement dans `.env`
-
-## 📝 Notes importantes
-
-- Le fichier `.env` ne doit **jamais** être commité dans Git
-- Utilisez `.env.example` comme template
-- Toutes les dépendances sont gérées par npm via `package.json`
-- Pour partager le projet, partagez uniquement le code source (sans `node_modules`)
-- Les autres développeurs n'auront qu'à faire `npm install`
-
-## 📞 Support
-
-Pour toute question : witechagency@gmail.com
-
----
-
-**© 2025 Wi'Tech - Tous droits réservés**
