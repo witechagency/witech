@@ -1,6 +1,8 @@
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import emailjs from "@emailjs/browser";
+import { supabase } from "../lib/supabase";
 
 interface ContactFormProps {
     isOpen: boolean;
@@ -9,20 +11,74 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
-        nom: '',
-        entreprise: '',
-        numero: '',
-        email: ''
+        nom: "",
+        entreprise: "",
+        numero: "",
+        email: ""
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // TODO: Implement form submission logic
-        console.log('Form submitted:', { ...formData, pack: packName });
-        alert(`Demande envoyée pour le ${packName} !\nNous vous contacterons bientôt.`);
-        onClose();
-        setFormData({ nom: '', entreprise: '', numero: '', email: '' });
+        setLoading(true);
+
+        try {
+            // 1️⃣ STOCKAGE DANS SUPABASE
+            const { error } = await supabase.from("clients").insert([
+                {
+                    name: formData.nom,
+                    company: formData.entreprise,
+                    phone: formData.numero,
+                    email: formData.email,
+                    pack: packName,
+                },
+            ]);
+
+            if (error) throw error;
+
+            // 2️⃣ ENVOI PAR EMAILJS (mail interne Wi’Tech)
+            await emailjs.send(
+                "service_5g5q2pn",
+                "template_0g6mc4j", //
+                {
+                    nom: formData.nom,
+                    entreprise: formData.entreprise,
+                    numero: formData.numero,
+                    email: formData.email,
+                    pack: packName,
+                },
+                "WvDIwX_AvVXUAJFgR" //
+            );
+
+            // 3️⃣ AUTO-REPLY AU CLIENT
+            await emailjs.send(
+                "service_5g5q2pn",
+                "template_l6dut7q", //
+                {
+                    name: formData.nom,
+                    email: formData.email,
+                    nom: formData.nom,
+                    entreprise: formData.entreprise,
+                    numero: formData.numero,
+                    pack: packName,
+                },
+                "WvDIwX_AvVXUAJFgR"
+            );
+
+            alert(
+                `Votre demande a bien été envoyée ! 🎉\nL’équipe Wi’Tech vous recontactera très rapidement.`
+            );
+
+            // Reset & close
+            setFormData({ nom: "", entreprise: "", numero: "", email: "" });
+            onClose();
+        } catch (err) {
+            console.error(err);
+            alert("Une erreur est survenue. Veuillez réessayer.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -67,70 +123,75 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                             {/* Form */}
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div>
-                                    <label htmlFor="nom" className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
                                         Nom complet *
                                     </label>
                                     <input
                                         type="text"
-                                        id="nom"
                                         required
                                         value={formData.nom}
-                                        onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                                        onChange={(e) =>
+                                            setFormData({ ...formData, nom: e.target.value })
+                                        }
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
                                         placeholder="Jean Dupont"
                                     />
                                 </div>
 
                                 <div>
-                                    <label htmlFor="entreprise" className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
                                         Entreprise *
                                     </label>
                                     <input
                                         type="text"
-                                        id="entreprise"
                                         required
                                         value={formData.entreprise}
-                                        onChange={(e) => setFormData({ ...formData, entreprise: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                                        onChange={(e) =>
+                                            setFormData({ ...formData, entreprise: e.target.value })
+                                        }
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
                                         placeholder="Mon Entreprise"
                                     />
                                 </div>
 
                                 <div>
-                                    <label htmlFor="numero" className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
                                         Numéro de téléphone *
                                     </label>
                                     <input
                                         type="tel"
-                                        id="numero"
                                         required
                                         value={formData.numero}
-                                        onChange={(e) => setFormData({ ...formData, numero: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                                        onChange={(e) =>
+                                            setFormData({ ...formData, numero: e.target.value })
+                                        }
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
                                         placeholder="+33 6 12 34 56 78"
                                     />
                                 </div>
 
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
                                         Email *
                                     </label>
                                     <input
                                         type="email"
-                                        id="email"
                                         required
                                         value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                                        onChange={(e) =>
+                                            setFormData({ ...formData, email: e.target.value })
+                                        }
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
                                         placeholder="jean.dupont@email.com"
                                     />
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-600/25 transition-all mt-6"
+                                    disabled={loading}
+                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-600/25 transition-all mt-6 disabled:opacity-60"
                                 >
-                                    Envoyer ma demande
+                                    {loading ? "Envoi en cours..." : "Envoyer ma demande"}
                                 </button>
                             </form>
                         </div>
