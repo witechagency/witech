@@ -59,7 +59,7 @@ export function Hero() {
                         <motion.a
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            href="#contact"
+                            href="#pricing"
                             className="group bg-gradient-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all flex items-center gap-3"
                         >
                             Commencer mon projet
