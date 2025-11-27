@@ -1,4 +1,4 @@
-import { ArrowRight, MessageCircle, Sparkles, Zap, Globe } from 'lucide-react';
+import { ArrowRight, MessageCircle, Sparkles, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Hero() {
@@ -59,7 +59,7 @@ export function Hero() {
                         <motion.a
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            href="#contact"
+                            href="#pricing"
                             className="group bg-gradient-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all flex items-center gap-3"
                         >
                             Commencer mon projet
@@ -69,7 +69,7 @@ export function Hero() {
                         <motion.a
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            href="https://wa.me/33600000000"
+                            href="https://wa.me"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/10 hover:bg-white/5 transition-all flex items-center gap-3 backdrop-blur-sm"
