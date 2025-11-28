@@ -11,24 +11,6 @@ export function Hero() {
                 <div className="absolute top-[40%] left-[30%] w-[300px] h-[300px] bg-pink-600/20 rounded-full blur-[100px] animate-pulse" />
             </div>
 
-            {/* Floating Elements */}
-            <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-32 left-[15%] hidden lg:flex items-center gap-2 glass-dark px-4 py-2 rounded-full border border-white/10"
-            >
-                <Sparkles size={16} className="text-yellow-400" />
-                <span className="text-white/80 text-sm font-medium">Design Premium</span>
-            </motion.div>
-
-            <motion.div
-                animate={{ y: [0, 20, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-32 right-[15%] hidden lg:flex items-center gap-2 glass-dark px-4 py-2 rounded-full border border-white/10"
-            >
-                <Zap size={16} className="text-blue-400" />
-                <span className="text-white/80 text-sm font-medium">Ultra Rapide</span>
-            </motion.div>
 
             <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
                 <motion.div
@@ -36,14 +18,6 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        <span className="text-white/60 text-sm font-medium">Disponible pour nouveaux projets</span>
-                    </div>
-
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-tight">
                         Votre site web pro, <br />
                         <span className="text-gradient">
