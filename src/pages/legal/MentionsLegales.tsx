@@ -15,7 +15,7 @@ export function MentionsLegales() {
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Informations légales</h2>
                         <div className="space-y-2 text-gray-700">
                             <p><strong>Nom de l'entreprise :</strong> Wi'Tech</p>
-                            <p><strong>Statut juridique :</strong> Auto-entreprise / Micro-entreprise</p>
+                            <p><strong>Statut juridique :</strong> Auto-entreprise</p>
                             <p><strong>Email :</strong> <a href="mailto:witechagency@gmail.com" className="text-blue-600 hover:underline">witechagency@gmail.com</a></p>
                             <p><strong>Numéro SIRET :</strong> [À compléter]</p>
                         </div>
@@ -24,8 +24,8 @@ export function MentionsLegales() {
                     <section className="mb-8">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Hébergement du site</h2>
                         <div className="space-y-2 text-gray-700">
-                            <p><strong>Hébergeur :</strong> [Hostinger / OVH / Autre]</p>
-                            <p><strong>Adresse :</strong> [À compléter]</p>
+                            <p><strong>Hébergeur :</strong> [Hostinger / OVH / Render]</p>
+                            {/* <p><strong>Adresse :</strong> [À compléter]</p> */}
                         </div>
                     </section>
 

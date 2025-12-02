@@ -3,24 +3,24 @@ import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
     {
-        title: "E-commerce Mode",
-        category: "Site Marchand",
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800"
+        title: "Wi'Tech",
+        category: "Prestation de service web",
+        image: "../../src/assets/Design_sans_titre__2_-removebg-preview.png"
     },
     {
-        title: "Cabinet d'Avocat",
+        title: "Mariage L & B",
+        category: "Site de Mariage",
+        image: "../../src/assets/Design_sans_titre__3_-removebg-preview.png"
+    },
+    {
+        title: "Hurican",
         category: "Site Vitrine",
-        image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"
+        image: "../../src/assets/Design_sans_titre__4_-removebg-preview.png"
     },
     {
-        title: "Restaurant Italien",
-        category: "Site Vitrine + Réservation",
-        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-        title: "Start-up SaaS",
-        category: "Landing Page",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+        title: "Portfolio",
+        category: "Site Vitrine",
+        image: "../../src/assets/Design_sans_titre__5_-removebg-preview.png"
     },
     {
         title: "Agence Immobilière",
