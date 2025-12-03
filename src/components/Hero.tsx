@@ -1,4 +1,4 @@
-import { ArrowRight, MessageCircle, Sparkles, Zap, Globe } from 'lucide-react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Hero() {
