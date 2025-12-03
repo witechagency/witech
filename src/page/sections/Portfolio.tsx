@@ -33,13 +33,15 @@ const projects = [
         title: "Salon de Coiffure",
         category: "Site Vitrine",
         image: "../../src/assets/image.png",
-        status: "in-progress"
+        link: "https://site-de-coiffeur.onrender.com/",
+        status: "completed"
     },
     {
         title: "Restaurant Africain",
         category: "Site E-commerce",
         image: "../../src/assets/image.png",
-        status: "in-progress"
+        link: "https://site-de-restaurant.onrender.com/",
+        status: "completed"
     }
 ];
 
