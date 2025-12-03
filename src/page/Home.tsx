@@ -5,6 +5,7 @@ import { Advantages } from './sections/Advantages';
 import { Process } from './sections/Process';
 import { Pricing } from './sections/Pricing';
 import { Portfolio } from './sections/Portfolio';
+import { TechStack } from './sections/TechStack';
 import { ContactButton } from '../components/ContactButton';
 import { Footer } from '../components/Footer';
 
@@ -19,6 +20,7 @@ export function Home() {
                 <Process />
                 <Pricing />
                 <Portfolio />
+                <TechStack />
             </main>
             <ContactButton />
             <Footer />
