@@ -7,6 +7,7 @@ import { Pricing } from './sections/Pricing';
 import { Portfolio } from './sections/Portfolio';
 import { ContactButton } from '../components/ContactButton';
 import { Footer } from '../components/Footer';
+import { Technologies } from './sections/Technologies';
 
 export function Home() {
     return (
@@ -19,6 +20,7 @@ export function Home() {
                 <Process />
                 <Pricing />
                 <Portfolio />
+                <Technologies />
             </main>
             <ContactButton />
             <Footer />

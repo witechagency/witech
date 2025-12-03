@@ -23,7 +23,8 @@ export const packs = [
             "Responsive",
             "Formulaire simple",
             "Intégration réseaux sociaux",
-            "Installation WordPress / WooCommerce",
+            "Choix : WordPress ou développement sur mesure",
+            "E-commerce : WooCommerce ou Shopify (si applicable)",
             "1 retouche",
             "SEO de base"
         ]
@@ -36,6 +37,8 @@ export const packs = [
             "Design personnalisé",
             "Formulaire avancé",
             "Intégration contenu (texte + images)",
+            "Choix : WordPress ou développement sur mesure",
+            "E-commerce : WooCommerce ou Shopify (si applicable)",
             "2 retouches",
             "SEO de base",
             "Header / Footer pro"
@@ -49,8 +52,9 @@ export const packs = [
             "Design premium",
             "Mise en page sur mesure",
             "Intégration complète",
+            "Choix : WordPress ou développement sur mesure",
+            "E-commerce : WooCommerce ou Shopify (si applicable)",
             "3 retouches",
-            "Installation WP/WooCommerce",
             "SEO de base"
         ]
     }
@@ -69,34 +73,43 @@ export const options = [
     {
         category: "Maintenance",
         items: [
-            { name: "Mensuelle", price: "19 €/mois" },
-            { name: "Annuelle", price: "199 €/an" }
+            { name: "Mensuelle", price: "Sur devis" },
+            { name: "Annuelle", price: "Sur devis" }
         ],
         icon: Settings
     },
     {
         category: "Email professionnel",
         items: [
-            { name: "Licence", price: "15 €/an" },
-            { name: "Configuration", price: "29 €" }
+            { name: "Licence", price: "Sur devis" },
+            { name: "Configuration", price: "Sur devis" }
         ],
         icon: Mail
     },
     {
         category: "Automatisation & IA",
         items: [
-            { name: "Chatbot WhatsApp", price: "79 €" },
-            { name: "Chatbot sur site", price: "129 €" }
+            { name: "Chatbot WhatsApp", price: "Sur devis" },
+            { name: "Chatbot sur site", price: "Sur devis" }
         ],
         icon: MessageSquare
     },
     {
         category: "Support Premium",
         items: [
-            { name: "Réponse 24h", price: "Inclus" },
-            { name: "Assistance téléphone", price: "Inclus" }
+            { name: "Réponse 24h", price: "Sur devis" },
+            { name: "Assistance téléphone", price: "Sur devis" }
         ],
         icon: Headset
+    },
+    {
+        category: "Modification de sites",
+        items: [
+            { name: "Refonte design", price: "Sur devis" },
+            { name: "Ajout de fonctionnalités", price: "Sur devis" },
+            { name: "Migration de plateforme", price: "Sur devis" }
+        ],
+        icon: Settings
     }
 ];
 
