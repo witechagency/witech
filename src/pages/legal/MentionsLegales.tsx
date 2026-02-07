@@ -15,9 +15,9 @@ export function MentionsLegales() {
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Informations légales</h2>
                         <div className="space-y-2 text-gray-700">
                             <p><strong>Nom de l'entreprise :</strong> Wi'Tech</p>
-                            <p><strong>Statut juridique :</strong> Auto-entreprise</p>
+                            <p><strong>Statut juridique :</strong> Entrepreneur individuel </p>
                             <p><strong>Email :</strong> <a href="mailto:witechagency@gmail.com" className="text-blue-600 hover:underline">witechagency@gmail.com</a></p>
-                            <p><strong>Numéro SIRET :</strong> [À compléter]</p>
+                            <p><strong>Numéro SIRET :</strong> 93304618700029 </p>
                         </div>
                     </section>
 

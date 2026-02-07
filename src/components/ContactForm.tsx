@@ -40,8 +40,8 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
 
             // 2️⃣ ENVOI PAR EMAILJS (mail interne Wi’Tech)
             await emailjs.send(
-                "service_5g5q2pn",
-                "template_0g6mc4j", //
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_INTERNAL,
                 {
                     nom: formData.nom,
                     entreprise: formData.entreprise,
@@ -49,13 +49,13 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                     email: formData.email,
                     pack: packName,
                 },
-                "WvDIwX_AvVXUAJFgR" //
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             );
 
             // 3️⃣ AUTO-REPLY AU CLIENT
             await emailjs.send(
-                "service_5g5q2pn",
-                "template_l6dut7q", //
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY,
                 {
                     name: formData.nom,
                     email: formData.email,
@@ -64,7 +64,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                     numero: formData.numero,
                     pack: packName,
                 },
-                "WvDIwX_AvVXUAJFgR"
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             );
 
             setShowSuccess(true);
@@ -91,6 +91,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                 <>
                     {/* Backdrop */}
                     <motion.div
+                        key="contact-backdrop"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -100,6 +101,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
 
                     {/* Modal */}
                     <motion.div
+                        key="contact-modal"
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -205,8 +207,12 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
 
             {/* Success Modal */}
             {showSuccess && (
-                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
+                <div 
+                    key="success-overlay"
+                    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+                >
                     <motion.div
+                        key="success-modal"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6"

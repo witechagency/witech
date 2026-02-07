@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '../../lib/supabase';
 import { Search, Trash2, LogOut, RefreshCw } from 'lucide-react';
@@ -15,6 +15,7 @@ interface Prospect {
 
 export function ProspectsAdmin() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [prospects, setProspects] = useState<Prospect[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -22,21 +23,45 @@ export function ProspectsAdmin() {
     const [error, setError] = useState('');
     const [deleteId, setDeleteId] = useState<number | null>(null);
 
-    const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'admin123';
-
-    const handleLogin = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (password === ADMIN_PASSWORD) {
+    const checkSession = async () => {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
             setIsAuthenticated(true);
-            setError('');
             fetchProspects();
-        } else {
-            setError('Mot de passe incorrect');
         }
     };
 
-    const handleLogout = () => {
+    useEffect(() => {
+        checkSession();
+    }, []);
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError('');
+        
+        try {
+            const { error: loginError } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+
+            if (loginError) throw loginError;
+
+            setIsAuthenticated(true);
+            fetchProspects();
+        } catch (err: any) {
+            console.error('Login error:', err);
+            setError('Identifiants incorrects');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
         setIsAuthenticated(false);
+        setEmail('');
         setPassword('');
         setProspects([]);
     };
@@ -100,6 +125,20 @@ export function ProspectsAdmin() {
                     <form onSubmit={handleLogin} className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Email
+                            </label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                                placeholder="votre@email.com"
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
                                 Mot de passe
                             </label>
                             <input
@@ -107,7 +146,7 @@ export function ProspectsAdmin() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
-                                placeholder="Entrez le mot de passe admin"
+                                placeholder="••••••••"
                                 required
                             />
                         </div>
@@ -118,9 +157,10 @@ export function ProspectsAdmin() {
 
                         <button
                             type="submit"
-                            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-600/25 transition-all"
+                            disabled={loading}
+                            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-600/25 transition-all disabled:opacity-50"
                         >
-                            Se connecter
+                            {loading ? 'Connexion...' : 'Se connecter'}
                         </button>
                     </form>
                 </motion.div>
@@ -226,8 +266,8 @@ export function ProspectsAdmin() {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200">
-                                    {filteredProspects.map((prospect) => (
-                                        <tr key={prospect.id} className="hover:bg-gray-50 transition-colors">
+                                    {filteredProspects.map((prospect, index) => (
+                                        <tr key={prospect.id || index} className="hover:bg-gray-50 transition-colors">
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="font-medium text-gray-900">{prospect.name}</div>
                                             </td>

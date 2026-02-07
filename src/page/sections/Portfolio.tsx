@@ -3,10 +3,10 @@ import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
     {
-        title: "Hurricane",
-        category: "Application Web",
-        image: "/src/assets/Hurricane.png",
-        link: "https://hurricane-10wb.onrender.com/",
+        title: "BK Engineering",
+        category: "Présentation de services d'autoentrepreneur",
+        image: "/src/assets/Bikel.png",
+        link: "https://bk-engineering.onrender.com/",
         status: "live"
     },
     {
@@ -17,10 +17,10 @@ const projects = [
         status: "live"
     },
     {
-        title: "Portfolio",
-        category: "Site Vitrine",
-        image: "/src/assets/Portfolio.png",
-        link: "https://bis-portfo.onrender.com/",
+        title: "KVK Football",
+        category: "Média de football Blog",
+        image: "/src/assets/kvkfootball.png",
+        link: "https://kvk-football-siteofficiel.vercel.app/",
         status: "live"
     },
     {
