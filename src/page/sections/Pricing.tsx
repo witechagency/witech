@@ -15,7 +15,7 @@ export function Pricing() {
     };
 
     return (
-        <section id="pricing" className="py-32 bg-gradient-to-br from-violet-50 via-fuchsia-50 to-pink-50">
+        <section id="pricing" className="py-32 bg-gradient-to-br from-violet-50 via-fuchsia-50 to-pink-50 overflow-hidden">
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-20">
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nos <span className="text-gradient">Packs</span></h2>

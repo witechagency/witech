@@ -5,47 +5,47 @@ const projects = [
     {
         title: "BK Engineering",
         category: "Présentation de services d'autoentrepreneur",
-        image: "/src/assets/Bikel.png",
+        image: "/Bikel.png",
         link: "https://bk-engineering.onrender.com/",
         status: "live"
     },
     {
         title: "Mariage Africain",
         category: "Site Événementiel",
-        image: "/src/assets/Mariage.png",
+        image: "/Mariage.png",
         link: "https://mariage-africain.onrender.com/",
         status: "live"
     },
     {
         title: "KVK Football",
         category: "Média de football Blog",
-        image: "/src/assets/kvkfootball.png",
+        image: "/kvkfootball.png",
         link: "https://kvk-football-siteofficiel.vercel.app/",
         status: "live"
     },
     {
         title: "Restaurior",
         category: "Site Restaurant",
-        image: "/src/assets/Restaurior.png",
+        image: "/Restaurior.png",
         status: "in-progress"
     },
     {
         title: "SOKO Commerce",
         category: "Marketplace",
-        image: "/src/assets/Soko.png",
+        image: "/Soko.png",
         status: "in-progress"
     },
     {
         title: "Wi'Tech",
         category: "Site Agence",
-        image: "/src/assets/Witech.png",
+        image: "/Witech.png",
         status: "current"
     }
 ];
 
 export function Portfolio() {
     return (
-        <section id="portfolio" className="py-32 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
+        <section id="portfolio" className="py-32 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 overflow-hidden">
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-20">
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nos <span className="text-gradient">Réalisations</span></h2>
@@ -69,6 +69,8 @@ export function Portfolio() {
                             <img
                                 src={project.image}
                                 alt={project.title}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             

@@ -27,7 +27,7 @@ const advantages = [
 
 export function Advantages() {
     return (
-        <section id="advantages" className="py-32 bg-gradient-to-br from-indigo-50 via-white to-cyan-50 relative">
+        <section id="advantages" className="py-32 bg-gradient-to-br from-indigo-50 via-white to-cyan-50 relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-200/20 rounded-full blur-[100px] -z-10" />
 
             <div className="max-w-6xl mx-auto px-6">

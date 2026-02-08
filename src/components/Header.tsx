@@ -23,7 +23,7 @@ export function Header() {
                 isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
             )}
         >
-            <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+            <div className="max-w-6xl mx-auto px-6 flex items-center justify-between w-full">
                 <a href="#" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                     Wi'Tech
                 </a>

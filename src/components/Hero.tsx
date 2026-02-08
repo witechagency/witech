@@ -18,7 +18,7 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-tight">
+                    <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-tight">
                         Votre site web pro, <br />
                         <span className="text-gradient">
                             livré vite.
