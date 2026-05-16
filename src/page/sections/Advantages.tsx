@@ -1,6 +1,7 @@
 import { Zap, Shield, Headset, Rocket } from 'lucide-react';
 import { ServiceCard } from '../../components/ServiceCard';
 import { motion } from 'framer-motion';
+import { PREMIUM_SPRING, STAGGER_CONTAINER, SCROLL_VIEW_CONFIG } from '../../lib/framer-configs';
 
 const advantages = [
     {
@@ -27,40 +28,45 @@ const advantages = [
 
 export function Advantages() {
     return (
-        <section id="advantages" className="py-32 bg-gradient-to-br from-indigo-50 via-white to-cyan-50 relative overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-200/20 rounded-full blur-[100px] -z-10" />
-
-            <div className="max-w-6xl mx-auto px-6">
-                <div className="text-center mb-20">
+        <section id="advantages" className="py-32 bg-white relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-24">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                        viewport={SCROLL_VIEW_CONFIG}
+                        transition={PREMIUM_SPRING}
+                        className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 mb-8"
                     >
                         Pourquoi choisir <span className="text-gradient">Wi'Tech</span> ?
                     </motion.h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
-                        Nous allions expertise technique et vision créative pour votre réussite.
+                    <p className="text-xl text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+                        L'alliance de l'expertise technique et de la vision créative pour votre succès.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <motion.div 
+                    variants={STAGGER_CONTAINER(0.1)}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={SCROLL_VIEW_CONFIG}
+                    className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
                     {advantages.map((advantage, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            variants={{
+                                initial: { opacity: 0, y: 20 },
+                                animate: { opacity: 1, y: 0, transition: PREMIUM_SPRING }
+                            }}
                         >
                             <ServiceCard
                                 {...advantage}
-                                className="bg-white/80 border-none hover:bg-white hover:shadow-2xl"
+                                className="border-transparent"
                             />
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

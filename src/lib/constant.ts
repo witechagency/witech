@@ -1,4 +1,4 @@
-import { Mail, MessageSquare, Headset, BarChart, Globe, Settings, Cloud } from 'lucide-react';
+import { Mail, MessageSquare, Headset, BarChart, Globe, Settings, Cloud, Zap, Cpu, Bot, Workflow } from 'lucide-react';
 
 export const services = [
     {
@@ -7,8 +7,18 @@ export const services = [
         icon: Globe
     },
     {
-        title: "Solutions Cloud",
-        description: "Hébergement sécurisé, maintenance et déploiement continu.",
+        title: "Automatisations & n8n",
+        description: "Optimisation de vos processus métiers via n8n. Connectez vos outils et automatisez vos tâches répétitives.",
+        icon: Workflow
+    },
+    {
+        title: "Ecosystème Microsoft",
+        description: "Expertise Power Automate, Power Apps et Copilot Studio pour une productivité décuplée.",
+        icon: Cpu
+    },
+    {
+        title: "Solutions Cloud & Maintenance",
+        description: "Hébergement sécurisé et maintenance évolutive pour garantir la pérennité de vos projets.",
         icon: Cloud
     }
 ];

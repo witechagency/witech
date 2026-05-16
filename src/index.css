@@ -1,181 +1,123 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(240 10% 3.9%);
+  --color-primary: hsl(240 5.9% 10%);
+  --color-primary-foreground: hsl(0 0% 98%);
+  --color-secondary: hsl(240 4.8% 95.9%);
+  --color-secondary-foreground: hsl(240 5.9% 10%);
+  --color-muted: hsl(240 4.8% 95.9%);
+  --color-muted-foreground: hsl(240 3.8% 46.1%);
+  --color-accent: hsl(240 4.8% 95.9%);
+  --color-accent-foreground: hsl(240 5.9% 10%);
+  --color-border: hsl(240 5.9% 90%);
+  --color-input: hsl(240 5.9% 90%);
+  --color-ring: hsl(240 5.9% 10%);
+}
+
 @layer base {
   html {
-    scroll-behavior: smooth;
-    font-family: 'Outfit', sans-serif;
+    scroll-behavior: auto; /* Required for Lenis */
+    font-family: 'Outfit', 'Inter', sans-serif;
     @apply overflow-x-hidden;
   }
 
   body {
-    @apply antialiased text-gray-900 bg-gray-50 overflow-x-hidden;
+    @apply antialiased text-gray-900 bg-white overflow-x-hidden;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-xl;
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
   }
 
   .glass-dark {
-    @apply bg-gray-900/80 backdrop-blur-lg border border-white/10 shadow-xl;
+    @apply bg-black/80 backdrop-blur-md border border-white/5 shadow-sm;
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#10b981] via-[#14b8a6] to-[#d4af37] bg-clip-text text-transparent;
   }
 
-  .bg-gradient-primary {
-    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600;
+  .text-gradient-cyan {
+    @apply bg-gradient-to-r from-[#06b6d4] to-[#10b981] bg-clip-text text-transparent;
+  }
+
+  .text-gradient-vibrant {
+    @apply bg-gradient-to-br from-[#059669] via-[#0d9488] to-[#fbbf24] bg-clip-text text-transparent;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(20, 184, 166, 0.1);
+  }
+
+  .neon-glow-cyan {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), 0 0 40px rgba(16, 185, 129, 0.1);
+  }
+
+  .premium-border {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .premium-border {
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 
 /* ============================
-   Floating cards (déjà présent)
+   Animations & Transitions
+   ============================ */
+
+/* Custom smooth scroll settings for Lenis */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ============================
+   Floating effects
    ============================ */
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-20px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float 6s ease-in-out 3s infinite;
+  animation: float 5s ease-in-out infinite;
 }
 
 /* ============================
-   Gradient Reveal Animation
+   Bento Grid Utilities
    ============================ */
-.gradient-reveal {
-  position: relative;
-  overflow: hidden;
+.bento-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-.gradient-reveal::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(37, 99, 235, 0.15),
-    rgba(147, 51, 234, 0.15)
-  );
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 0;
-}
-
-.gradient-reveal:hover::before {
-  transform: scaleX(1);
-}
-
-.gradient-reveal > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* =======================================================
-   BLOB BACKGROUND ANIMATIONS
-   ======================================================= */
-
-/* Container à utiliser derrière la page (optionnel)
-   Exemple React :
-   <div className="blob-layer">
-     <div className="blob blob-1"></div>
-     <div className="blob blob-2"></div>
-     <div className="blob blob-3"></div>
-   </div>
-*/
-.blob-layer {
-  position: fixed;
-  inset: -150px;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: -1;
-}
-
-/* Blob générique */
-.blob {
-  position: absolute;
-  width: 26rem;   /* ~416px */
-  height: 26rem;
-  border-radius: 9999px;
-  filter: blur(40px);
-  opacity: 0.7;
-  mix-blend-mode: multiply;
-  background: radial-gradient(circle at 30% 20%, #38bdf8, #6366f1 40%, #ec4899 80%);
-  animation: blob-move 28s ease-in-out infinite alternate,
-             blob-pulse 18s ease-in-out infinite;
-}
-
-/* Variantes pour les positions / timings */
-.blob-1 {
-  top: -10%;
-  left: -10%;
-  animation-duration: 30s, 22s;
-}
-
-.blob-2 {
-  top: 40%;
-  right: -15%;
-  animation-duration: 35s, 20s;
-}
-
-.blob-3 {
-  bottom: -15%;
-  left: 30%;
-  animation-duration: 32s, 26s;
-}
-
-/* Morphing + déplacement lent */
-@keyframes blob-move {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-    border-radius: 60% 40% 55% 45%;
-  }
-  25% {
-    transform: translate3d(20px, -40px, 0) scale(1.1);
-    border-radius: 50% 60% 45% 55%;
-  }
-  50% {
-    transform: translate3d(-40px, 20px, 0) scale(0.95);
-    border-radius: 55% 45% 60% 40%;
-  }
-  75% {
-    transform: translate3d(30px, 40px, 0) scale(1.05);
-    border-radius: 45% 55% 50% 50%;
-  }
-  100% {
-    transform: translate3d(-20px, -30px, 0) scale(1);
-    border-radius: 60% 40% 55% 45%;
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 12rem;
   }
 }
 
-/* Variation légère d’intensité */
-@keyframes blob-pulse {
-  0% {
-    opacity: 0.5;
-    filter: blur(28px);
-  }
-  50% {
-    opacity: 0.9;
-    filter: blur(45px);
-  }
-  100% {
-    opacity: 0.5;
-    filter: blur(28px);
-  }
-}
