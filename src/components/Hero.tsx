@@ -1,7 +1,7 @@
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PREMIUM_SPRING, STAGGER_CONTAINER } from '../lib/framer-configs';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const phrases = [
     { main: "Votre site web", accent: "livré vite." },
@@ -11,9 +11,7 @@ const phrases = [
 
 export function Hero() {
     const [currentPhrase, setCurrentPhrase] = useState(0);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    // Phrase Rotation Logic
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentPhrase((prev) => (prev + 1) % phrases.length);
@@ -21,88 +19,15 @@ export function Hero() {
         return () => clearInterval(timer);
     }, []);
 
-    // Starfield Animation Logic (Star Wars Style)
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        let animationFrameId: number;
-        let stars: any[] = [];
-        const numStars = 400;
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-
-        const initStars = () => {
-            stars = [];
-            for (let i = 0; i < numStars; i++) {
-                stars.push({
-                    x: Math.random() * width - width / 2,
-                    y: Math.random() * height - height / 2,
-                    z: Math.random() * width,
-                    o: '0.' + Math.floor(Math.random() * 99) + 1
-                });
-            }
-        };
-
-        const draw = () => {
-            ctx.fillStyle = "rgba(5, 5, 5, 0.2)";
-            ctx.fillRect(0, 0, width, height);
-
-            for (let i = 0; i < numStars; i++) {
-                const star = stars[i];
-                star.z -= 15; // Speed of light
-
-                if (star.z <= 0) {
-                    star.z = width;
-                }
-
-                const x = (star.x / star.z) * width + width / 2;
-                const y = (star.y / star.z) * height + height / 2;
-                const size = (1 - star.z / width) * 3;
-
-                // Light streak effect (Hyperdrive)
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(16, 185, 129, ${star.o})`; // Emerald laser color
-                ctx.lineWidth = size;
-                ctx.moveTo(x, y);
-                ctx.lineTo(x + (star.x / star.z) * 20, y + (star.y / star.z) * 20);
-                ctx.stroke();
-            }
-
-            animationFrameId = requestAnimationFrame(draw);
-        };
-
-        initStars();
-        draw();
-
-        const handleResize = () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            initStars();
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            cancelAnimationFrame(animationFrameId);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#050505]">
-            {/* Starfield / Hyperdrive Canvas */}
-            <canvas 
-                ref={canvasRef}
-                className="absolute inset-0 pointer-events-none z-0"
-            />
 
-            {/* Glowing Nebulas for depth */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-                <div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-emerald-600/10 rounded-full blur-[180px]" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[1200px] h-[1200px] bg-amber-600/10 rounded-full blur-[180px]" />
-            </div>
+            {/* Static space background — replaces canvas animation */}
+            <div
+                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: "url('/hero-bg.svg')" }}
+                aria-hidden="true"
+            />
 
             <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
                 <motion.div
@@ -139,7 +64,7 @@ export function Hero() {
                                         <span className="text-gradient animate-shimmer italic">
                                             {phrases[currentPhrase].accent}
                                         </span>
-                                        <motion.div 
+                                        <motion.div
                                             initial={{ scaleX: 0 }}
                                             animate={{ scaleX: 1 }}
                                             className="absolute bottom-0 left-0 right-0 h-1 md:h-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 rounded-full origin-left shadow-[0_0_20px_rgba(16,185,129,0.5)]"
@@ -151,7 +76,7 @@ export function Hero() {
                     </div>
 
                     {/* Subtitle */}
-                    <motion.p 
+                    <motion.p
                         variants={{
                             initial: { opacity: 0, y: 20 },
                             animate: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } }
@@ -162,7 +87,7 @@ export function Hero() {
                     </motion.p>
 
                     {/* Buttons */}
-                    <motion.div 
+                    <motion.div
                         variants={{
                             initial: { opacity: 0, scale: 0.9 },
                             animate: { opacity: 1, scale: 1, transition: PREMIUM_SPRING }
@@ -195,10 +120,10 @@ export function Hero() {
             {/* Premium Scroll Indicator */}
             <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/20">
                 <div className="w-px h-24 bg-gradient-to-b from-white/20 to-transparent relative overflow-hidden">
-                    <motion.div 
+                    <motion.div
                         animate={{ y: ["-100%", "100%"] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent via-emerald-500 to-transparent" 
+                        className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent via-emerald-500 to-transparent"
                     />
                 </div>
             </div>
