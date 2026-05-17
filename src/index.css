@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Police Outfit auto-hébergée (plus de requête Google Fonts) */
+@import "@fontsource/outfit/300.css";
+@import "@fontsource/outfit/400.css";
+@import "@fontsource/outfit/700.css";
+
 @theme {
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(240 10% 3.9%);

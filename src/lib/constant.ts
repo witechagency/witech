@@ -1,4 +1,4 @@
-import { Mail, MessageSquare, Headset, BarChart, Globe, Settings, Cloud, Zap, Cpu, Bot, Workflow } from 'lucide-react';
+import { Mail, MessageSquare, Headset, BarChart, Globe, Settings, Cloud, Cpu, Workflow } from 'lucide-react';
 
 export const services = [
     {

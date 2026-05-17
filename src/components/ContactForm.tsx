@@ -1,7 +1,6 @@
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import emailjs from "@emailjs/browser";
 import { supabase } from "../lib/supabase";
 
 interface ContactFormProps {
@@ -25,7 +24,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
         setLoading(true);
 
         try {
-            // 1️⃣ STOCKAGE DANS SUPABASE
+            // STOCKAGE DANS SUPABASE
             const { error } = await supabase.from("clients").insert([
                 {
                     name: formData.nom,
@@ -38,34 +37,20 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
 
             if (error) throw error;
 
-            // 2️⃣ ENVOI PAR EMAILJS (mail interne Wi’Tech)
-            await emailjs.send(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID,
-                import.meta.env.VITE_EMAILJS_TEMPLATE_INTERNAL,
-                {
+            // ENVOI VIA API RESEND (serveur)
+            const mailRes = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
                     nom: formData.nom,
                     entreprise: formData.entreprise,
                     numero: formData.numero,
                     email: formData.email,
                     pack: packName,
-                },
-                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-            );
+                }),
+            });
 
-            // 3️⃣ AUTO-REPLY AU CLIENT
-            await emailjs.send(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID,
-                import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY,
-                {
-                    name: formData.nom,
-                    email: formData.email,
-                    nom: formData.nom,
-                    entreprise: formData.entreprise,
-                    numero: formData.numero,
-                    pack: packName,
-                },
-                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-            );
+            if (!mailRes.ok) throw new Error('Erreur envoi mail');
 
             setShowSuccess(true);
             
@@ -219,7 +204,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                     >
                         <h3 className="text-xl font-bold text-gray-900 mb-4">Demande envoyée ! 🎉</h3>
                         <p className="text-gray-600 mb-6">
-                            Votre demande a bien été envoyée ! L’équipe Wi’Tech vous recontactera très rapidement.
+                            Votre demande a bien été envoyée ! L'équipe Wi'Tech vous recontactera très rapidement.
                         </p>
                         <div className="flex justify-end">
                             <button

@@ -1,5 +1,5 @@
 import { ArrowRight, MessageCircle } from 'lucide-react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PREMIUM_SPRING, STAGGER_CONTAINER } from '../lib/framer-configs';
 import { useEffect, useState, useRef } from 'react';
 
