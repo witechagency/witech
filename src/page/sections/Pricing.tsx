@@ -143,28 +143,8 @@ export function Pricing() {
 
                     {/* Right Panel: Grid */}
                     <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Top: Image Grid (Réalisations) */}
-                        <motion.div 
-                            variants={{
-                                initial: { opacity: 0, y: 20 },
-                                animate: { opacity: 1, y: 0, transition: PREMIUM_SPRING }
-                            }}
-                            className="md:col-span-2 grid grid-cols-3 gap-4 h-56"
-                        >
-                            {[
-                                { img: "/Bikel.png", color: "bg-blue-500/20" },
-                                { img: "/KTM.png", color: "bg-orange-500/20" },
-                                { img: "/VDM.png", color: "bg-indigo-500/20" }
-                            ].map((item, i) => (
-                                <div key={i} className="group relative rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10">
-                                    <img src={item.img} className="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0" alt="" />
-                                    <div className={cn("absolute inset-0 opacity-20 group-hover:opacity-0 transition-opacity", item.color)} />
-                                </div>
-                            ))}
-                        </motion.div>
-
-                        {/* Middle: Price Tag Card */}
-                        <motion.div 
+                        {/* Price Tag Card */}
+                        <motion.div
                             variants={{
                                 initial: { opacity: 0, scale: 0.9 },
                                 animate: { opacity: 1, scale: 1, transition: PREMIUM_SPRING }
@@ -172,13 +152,13 @@ export function Pricing() {
                             className="md:col-span-2 bg-white rounded-[3rem] p-12 flex flex-col justify-center relative overflow-hidden group cursor-default"
                         >
                             <div className="absolute top-0 right-0 w-32 h-32 bg-gray-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-yellow-100 transition-colors duration-700" />
-                            
+
                             <p className="text-gray-400 font-bold uppercase tracking-[0.3em] text-xs mb-4">Investissement</p>
-                            <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4">
-                                <span className="text-gray-400 font-medium text-lg md:text-2xl italic">À partir de</span>
-                                <div className="flex items-baseline gap-2">
-                                    <span className="text-6xl md:text-9xl font-bold tracking-tighter text-black">1 490€</span>
-                                    <span className="text-gray-400 font-bold text-xl md:text-2xl">HT</span>
+                            <div className="flex flex-col gap-3">
+                                <span className="text-gray-400 font-medium text-lg md:text-xl italic">À partir de</span>
+                                <div className="flex flex-wrap items-baseline gap-3">
+                                    <span className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter text-black whitespace-nowrap">1&nbsp;490€</span>
+                                    <span className="text-gray-400 font-bold text-lg md:text-xl">HT</span>
                                 </div>
                             </div>
                         </motion.div>
