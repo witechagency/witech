@@ -24,7 +24,7 @@ export function Services() {
                         transition={{ ...PREMIUM_SPRING, delay: 0.1 }}
                         className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto font-light leading-relaxed px-6"
                     >
-                        Des solutions numériques d'exception pour les entreprises ambitieuses.
+                        Des sites qui génèrent des demandes et des automatisations qui suppriment vos tâches répétitives.
                     </motion.p>
                 </div>
 

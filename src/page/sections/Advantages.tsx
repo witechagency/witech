@@ -1,13 +1,13 @@
-import { Zap, Shield, Headset, Rocket } from 'lucide-react';
+import { Target, Shield, Headset, Workflow } from 'lucide-react';
 import { ServiceCard } from '../../components/ServiceCard';
 import { motion } from 'framer-motion';
 import { PREMIUM_SPRING, STAGGER_CONTAINER, SCROLL_VIEW_CONFIG } from '../../lib/framer-configs';
 
 const advantages = [
     {
-        title: "Rapidité d'exécution",
-        description: "Votre site en ligne en un temps record grâce à nos processus optimisés.",
-        icon: Zap
+        title: "Résultats mesurables",
+        description: "Un site pensé pour générer des demandes, pas seulement pour exister en ligne.",
+        icon: Target
     },
     {
         title: "Qualité Premium",
@@ -15,14 +15,14 @@ const advantages = [
         icon: Shield
     },
     {
+        title: "Automatisations sur-mesure",
+        description: "n8n, Power Automate : on supprime vos ressaisies et vos tâches répétitives.",
+        icon: Workflow
+    },
+    {
         title: "Support Réactif",
         description: "Une équipe à votre écoute pour vous accompagner à chaque étape.",
         icon: Headset
-    },
-    {
-        title: "Performance",
-        description: "Des sites ultra-rapides optimisés pour le référencement naturel.",
-        icon: Rocket
     }
 ];
 

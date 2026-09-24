@@ -4,8 +4,8 @@ import { PREMIUM_SPRING, STAGGER_CONTAINER } from '../lib/framer-configs';
 import { useEffect, useState } from 'react';
 
 const phrases = [
-    { main: "Votre site web", accent: "livré vite." },
-    { main: "Votre vision", accent: "propulsée." },
+    { main: "Votre site web", accent: "qui convertit." },
+    { main: "Vos ressaisies", accent: "supprimées." },
     { main: "Votre business", accent: "automatisé." }
 ];
 
@@ -83,7 +83,7 @@ export function Hero() {
                         }}
                         className="text-xl md:text-2xl text-white/50 mb-16 max-w-2xl mx-auto font-light leading-relaxed tracking-tight"
                     >
-                        Franchissez la vitesse de la lumière avec des solutions web d'élite. Design radical, performance sans compromis.
+                        Des sites qui vous amènent des demandes, des automatisations qui vous font gagner du temps. Design soigné, résultats mesurables.
                     </motion.p>
 
                     {/* Buttons */}

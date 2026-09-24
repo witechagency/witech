@@ -79,21 +79,10 @@ export function ServiceCard({
                             {title}
                         </h3>
                     </div>
-                    
-                    <p className="text-emerald-600/40 font-bold uppercase tracking-[0.3em] text-[10px]">
-                        Engineering & Excellence
-                    </p>
 
                     <p className="text-gray-500 leading-relaxed font-light text-lg pt-4 border-t border-gray-50 group-hover:text-gray-700 transition-colors">
                         {description}
                     </p>
-                </div>
-
-                {/* "Technical" footer details like a watch face */}
-                <div className="mt-12 flex items-center gap-6 opacity-20 group-hover:opacity-60 transition-opacity duration-700">
-                    <span className="text-[9px] font-black tracking-widest uppercase">Precision</span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                    <span className="text-[9px] font-black tracking-widest uppercase">Reliability</span>
                 </div>
             </div>
 

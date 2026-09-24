@@ -86,7 +86,7 @@ export function Technologies() {
             >
                 <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-gray-100 bg-white shadow-sm">
                     <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
-                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">Engineering & Excellence</span>
+                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">Stack maintenue à jour, en continu</span>
                 </div>
             </motion.div>
         </section>

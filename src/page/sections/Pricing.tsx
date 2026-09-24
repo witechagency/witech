@@ -1,9 +1,46 @@
-import { Check, ArrowRight, BarChart, Settings } from 'lucide-react';
+import { Check, ArrowRight, BarChart, Settings, Workflow } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ContactForm } from '../../components/ContactForm';
 import { PREMIUM_SPRING, STAGGER_CONTAINER, SCROLL_VIEW_CONFIG } from '../../lib/framer-configs';
 import { cn } from '../../lib/utils';
+
+const maintenanceTiers = [
+    {
+        name: "Essentiel",
+        price: "69€",
+        highlighted: false,
+        features: [
+            "Domaine + hébergement gérés",
+            "Sauvegardes automatiques",
+            "Mises à jour de sécurité",
+            "Délai d'intervention : 5 jours"
+        ]
+    },
+    {
+        name: "Sérénité",
+        price: "149€",
+        highlighted: true,
+        features: [
+            "Tout Essentiel, plus :",
+            "1h de modifications / mois",
+            "Rapport mensuel",
+            "Délai d'intervention : 48h"
+        ]
+    },
+    {
+        name: "Croissance",
+        price: "290€",
+        highlighted: false,
+        features: [
+            "Tout Sérénité, plus :",
+            "4h de modifications / mois",
+            "SEO suivi",
+            "1 automatisation n8n maintenue",
+            "Délai d'intervention : 24h"
+        ]
+    }
+];
 
 export function Pricing() {
     const [isFormOpen, setIsFormOpen] = useState(false);
@@ -140,14 +177,14 @@ export function Pricing() {
                             <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4">
                                 <span className="text-gray-400 font-medium text-lg md:text-2xl italic">À partir de</span>
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-6xl md:text-9xl font-bold tracking-tighter text-black">700€</span>
+                                    <span className="text-6xl md:text-9xl font-bold tracking-tighter text-black">1 490€</span>
                                     <span className="text-gray-400 font-bold text-xl md:text-2xl">HT</span>
                                 </div>
                             </div>
                         </motion.div>
 
                         {/* Bottom: Sub-cards (Upsells) */}
-                        <motion.div 
+                        <motion.div
                             variants={{
                                 initial: { opacity: 0, y: 20 },
                                 animate: { opacity: 1, y: 0, transition: PREMIUM_SPRING }
@@ -159,15 +196,18 @@ export function Pricing() {
                                 <BarChart className="text-[#D4AF37] opacity-50 group-hover:scale-110 transition-transform duration-500" size={64} />
                             </div>
                             <h4 className="text-white font-bold text-2xl mb-3 tracking-tight">SEO & Visibilité</h4>
-                            <p className="text-white/40 text-lg font-light leading-relaxed mb-10">Optimisation complète pour dominer les résultats Google.</p>
+                            <p className="text-white/40 text-lg font-light leading-relaxed mb-10">Suivi mensuel et optimisation continue pour progresser sur Google.</p>
                             <div className="mt-auto">
-                                <span className="inline-block bg-[#D4AF37] text-black text-sm font-bold px-6 py-3 rounded-2xl shadow-xl shadow-[#D4AF37]/20">
-                                    Sur devis
-                                </span>
+                                <button
+                                    onClick={() => handlePackClick('SEO & Visibilité')}
+                                    className="inline-block bg-[#D4AF37] text-black text-sm font-bold px-6 py-3 rounded-2xl shadow-xl shadow-[#D4AF37]/20 hover:bg-white transition-colors"
+                                >
+                                    Dès 120€/mois
+                                </button>
                             </div>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             variants={{
                                 initial: { opacity: 0, y: 20 },
                                 animate: { opacity: 1, y: 0, transition: PREMIUM_SPRING }
@@ -179,15 +219,115 @@ export function Pricing() {
                                 <Settings className="text-[#D4AF37] opacity-50 group-hover:rotate-90 transition-transform duration-700" size={64} />
                             </div>
                             <h4 className="text-white font-bold text-2xl mb-3 tracking-tight">Maintenance & Support</h4>
-                            <p className="text-white/40 text-lg font-light leading-relaxed mb-10">Gardez votre site à jour, sécurisé et performant 24/7.</p>
+                            <p className="text-white/40 text-lg font-light leading-relaxed mb-10">Domaine, hébergement, sauvegardes et sécurité gérés pour vous.</p>
                             <div className="mt-auto">
-                                <span className="inline-block bg-[#D4AF37] text-black text-sm font-bold px-6 py-3 rounded-2xl shadow-xl shadow-[#D4AF37]/20">
-                                    Sur devis
-                                </span>
+                                <a
+                                    href="#maintenance"
+                                    className="inline-block bg-[#D4AF37] text-black text-sm font-bold px-6 py-3 rounded-2xl shadow-xl shadow-[#D4AF37]/20 hover:bg-white transition-colors"
+                                >
+                                    Dès 69€/mois
+                                </a>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            variants={{
+                                initial: { opacity: 0, y: 20 },
+                                animate: { opacity: 1, y: 0, transition: PREMIUM_SPRING }
+                            }}
+                            whileHover={{ y: -10, transition: PREMIUM_SPRING }}
+                            className="md:col-span-2 bg-white/5 backdrop-blur-xl rounded-[3rem] p-10 border border-white/10 flex flex-col md:flex-row items-center gap-10 group"
+                        >
+                            <div className="h-40 w-full md:w-56 shrink-0 bg-white/5 rounded-[2rem] overflow-hidden flex items-center justify-center relative border border-white/5">
+                                <Workflow className="text-[#D4AF37] opacity-50 group-hover:scale-110 transition-transform duration-500" size={64} />
+                            </div>
+                            <div className="flex-1 text-center md:text-left">
+                                <h4 className="text-white font-bold text-2xl mb-3 tracking-tight">Automatisations maintenues</h4>
+                                <p className="text-white/40 text-lg font-light leading-relaxed">n8n, Power Automate : vos automatisations surveillées, corrigées et améliorées chaque mois.</p>
+                            </div>
+                            <div className="shrink-0">
+                                <button
+                                    onClick={() => handlePackClick('Automatisations maintenues')}
+                                    className="inline-block bg-[#D4AF37] text-black text-sm font-bold px-6 py-3 rounded-2xl shadow-xl shadow-[#D4AF37]/20 hover:bg-white transition-colors whitespace-nowrap"
+                                >
+                                    Dès 350€/mois
+                                </button>
                             </div>
                         </motion.div>
                     </div>
                 </motion.div>
+
+                {/* Maintenance tiers — the recurring offer */}
+                <div id="maintenance" className="mt-32 scroll-mt-24">
+                    <div className="text-center mb-20">
+                        <motion.h3
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={SCROLL_VIEW_CONFIG}
+                            transition={PREMIUM_SPRING}
+                            className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6"
+                        >
+                            La <span className="text-gradient">Sérénité</span>, chaque mois.
+                        </motion.h3>
+                        <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+                            Domaine, hébergement, sauvegardes et sécurité gérés par nos soins — vous n'y pensez plus.
+                        </p>
+                    </div>
+
+                    <motion.div
+                        variants={STAGGER_CONTAINER(0.1)}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={SCROLL_VIEW_CONFIG}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch"
+                    >
+                        {maintenanceTiers.map((tier) => (
+                            <motion.div
+                                key={tier.name}
+                                variants={{
+                                    initial: { opacity: 0, y: 20 },
+                                    animate: { opacity: 1, y: 0, transition: PREMIUM_SPRING }
+                                }}
+                                className={cn(
+                                    "rounded-[2.5rem] p-10 flex flex-col h-full border",
+                                    tier.highlighted
+                                        ? "bg-[#050505] text-white border-[#D4AF37]/30 shadow-2xl md:-translate-y-4"
+                                        : "bg-white text-gray-900 border-gray-100 shadow-sm"
+                                )}
+                            >
+                                {tier.highlighted && (
+                                    <span className="self-start mb-4 inline-block bg-[#D4AF37] text-black text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                                        Le plus choisi
+                                    </span>
+                                )}
+                                <h4 className="text-2xl font-bold tracking-tight mb-2">{tier.name}</h4>
+                                <div className="flex items-baseline gap-2 mb-6">
+                                    <span className="text-4xl font-bold tracking-tighter">{tier.price}</span>
+                                    <span className={cn("text-sm font-medium", tier.highlighted ? "text-white/50" : "text-gray-400")}>/mois</span>
+                                </div>
+                                <ul className="space-y-3 mb-10 flex-1">
+                                    {tier.features.map((feature) => (
+                                        <li key={feature} className="flex items-start gap-3 text-sm">
+                                            <Check size={16} strokeWidth={3} className="text-[#D4AF37] mt-0.5 shrink-0" />
+                                            <span className={tier.highlighted ? "text-white/80" : "text-gray-600"}>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <button
+                                    onClick={() => handlePackClick(`Formule ${tier.name}`)}
+                                    className={cn(
+                                        "mt-auto py-4 rounded-2xl font-bold text-sm transition-all",
+                                        tier.highlighted
+                                            ? "bg-[#D4AF37] text-black hover:bg-white"
+                                            : "bg-gray-900 text-white hover:bg-black"
+                                    )}
+                                >
+                                    Choisir {tier.name}
+                                </button>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
 
             {/* Contact Form Modal */}
