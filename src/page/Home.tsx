@@ -4,7 +4,7 @@ import { Services } from './sections/Services';
 import { Advantages } from './sections/Advantages';
 import { Process } from './sections/Process';
 import { Pricing } from './sections/Pricing';
-import { Portfolio } from './sections/Portfolio';
+import { Testimonials } from './sections/Testimonials';
 import { ContactButton } from '../components/ContactButton';
 import { Footer } from '../components/Footer';
 import { Technologies } from './sections/Technologies';
@@ -21,7 +21,7 @@ export function Home() {
                     <Advantages />
                     <Process />
                     <Pricing />
-                    <Portfolio />
+                    <Testimonials />
                     <Technologies />
                 </main>
                 <ContactButton />

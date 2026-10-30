@@ -92,7 +92,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         className="fixed inset-0 z-50 flex items-center justify-center p-4"
                     >
-                        <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative">
+                        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-w-md w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
                             {/* Close button */}
                             <button
                                 onClick={onClose}
@@ -103,11 +103,11 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
 
                             {/* Header */}
                             <div className="mb-6">
-                                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                                    Demande de devis
+                                <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                                    Se renseigner
                                 </h2>
-                                <p className="text-gray-600">
-                                    {packName}
+                                <p className="text-gray-500 text-sm">
+                                    {packName ? `Projet : ${packName}` : "Échangeons sur vos besoins, nous vous répondons rapidement."}
                                 </p>
                             </div>
 
@@ -124,7 +124,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                         onChange={(e) =>
                                             setFormData({ ...formData, nom: e.target.value })
                                         }
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-500/20 outline-none transition-all"
                                         placeholder="Jean Dupont"
                                     />
                                 </div>
@@ -140,7 +140,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                         onChange={(e) =>
                                             setFormData({ ...formData, entreprise: e.target.value })
                                         }
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-500/20 outline-none transition-all"
                                         placeholder="Mon Entreprise"
                                     />
                                 </div>
@@ -156,7 +156,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                         onChange={(e) =>
                                             setFormData({ ...formData, numero: e.target.value })
                                         }
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-500/20 outline-none transition-all"
                                         placeholder="+33 6 12 34 56 78"
                                     />
                                 </div>
@@ -172,7 +172,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                         onChange={(e) =>
                                             setFormData({ ...formData, email: e.target.value })
                                         }
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-500/20 outline-none transition-all"
                                         placeholder="jean.dupont@email.com"
                                     />
                                 </div>
@@ -180,7 +180,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-600/25 transition-all mt-6 disabled:opacity-60"
+                                    className="w-full bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-red-600/25 transition-all mt-6 disabled:opacity-60 cursor-pointer"
                                 >
                                     {loading ? "Envoi en cours..." : "Envoyer ma demande"}
                                 </button>
@@ -209,7 +209,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                         <div className="flex justify-end">
                             <button
                                 onClick={handleCloseSuccess}
-                                className="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:shadow-purple-600/25 transition-all font-medium"
+                                className="px-6 py-2.5 rounded-xl bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/25 transition-all font-semibold"
                             >
                                 OK
                             </button>

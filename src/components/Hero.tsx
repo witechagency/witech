@@ -1,12 +1,12 @@
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Globe, Workflow, Award, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PREMIUM_SPRING, STAGGER_CONTAINER } from '../lib/framer-configs';
 import { useEffect, useState } from 'react';
 
 const phrases = [
-    { main: "Votre site web", accent: "livré vite." },
-    { main: "Votre vision", accent: "propulsée." },
-    { main: "Votre business", accent: "automatisé." }
+    { lead: "Sites web convertissants", accent: "100% sur-mesure." },
+    { lead: "Cloud & Cybersécurité", accent: "Microsoft & Azure." },
+    { lead: "Automatisation de vos flux", accent: "propulsée par n8n." }
 ];
 
 export function Hero() {
@@ -15,59 +15,84 @@ export function Hero() {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentPhrase((prev) => (prev + 1) % phrases.length);
-        }, 3500);
+        }, 3600);
         return () => clearInterval(timer);
     }, []);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#050505]">
+        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden bg-gradient-to-b from-red-50/30 via-white to-white">
 
-            {/* Static space background — replaces canvas animation */}
-            <div
-                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: "url('/hero-bg.svg')" }}
+            {/* Subtle background grid & ambient light */}
+            <div 
+                className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:2rem_2rem] md:bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_20%,#000_60%,transparent_100%)]" 
+                aria-hidden="true"
+            />
+            <div 
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] md:w-[700px] h-[200px] md:h-[350px] bg-red-500/10 rounded-full blur-[90px] md:blur-[120px] pointer-events-none" 
                 aria-hidden="true"
             />
 
-            <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10">
                 <motion.div
-                    variants={STAGGER_CONTAINER(0.2, 0.3)}
+                    variants={STAGGER_CONTAINER(0.15, 0.2)}
                     initial="initial"
                     animate="animate"
                     className="flex flex-col items-center"
                 >
-                    {/* Floating Badge */}
+                    {/* Pills matching the official Wi'Tech banner */}
                     <motion.div
                         variants={{
-                            initial: { opacity: 0, y: 20 },
+                            initial: { opacity: 0, y: 15 },
                             animate: { opacity: 1, y: 0, transition: PREMIUM_SPRING }
                         }}
-                        className="mb-10 px-6 py-2 rounded-full border border-emerald-500/10 bg-emerald-500/5 backdrop-blur-xl shadow-2xl relative group overflow-hidden"
+                        className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mb-6 md:mb-8"
                     >
-                        <span className="text-emerald-400/70 text-[11px] font-bold uppercase tracking-[0.4em] relative z-10">L'Agence Web Nouvelle Génération</span>
+                        <span className="bg-[#991B1B] text-white text-[10px] sm:text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-xs tracking-wide">
+                            Expertise Reconnue
+                        </span>
+                        <span className="bg-[#991B1B] text-white text-[10px] sm:text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-xs tracking-wide">
+                            Solutions 100% sur-mesure
+                        </span>
+                        <span className="bg-[#991B1B] text-white text-[10px] sm:text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-xs tracking-wide">
+                            Azure, Sécurité & n8n
+                        </span>
                     </motion.div>
 
+                    {/* Target audience question */}
+                    <motion.p
+                        variants={{
+                            initial: { opacity: 0, y: 15 },
+                            animate: { opacity: 1, y: 0, transition: PREMIUM_SPRING }
+                        }}
+                        className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-widest text-red-600 mb-3 md:mb-4"
+                    >
+                        Êtes-vous une PME ? Un indépendant ?
+                    </motion.p>
+
                     {/* Headline with Rotating Text */}
-                    <div className="mb-10 min-h-[300px] md:min-h-[400px] flex flex-col items-center justify-center">
+                    <div className="mb-6 md:mb-8 min-h-[170px] sm:min-h-[220px] md:min-h-[260px] flex flex-col items-center justify-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={currentPhrase}
-                                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                                initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
                                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                exit={{ opacity: 0, y: -40, filter: "blur(10px)" }}
-                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                exit={{ opacity: 0, y: -25, filter: "blur(6px)" }}
+                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                                 className="text-center"
                             >
-                                <h1 className="text-4xl md:text-8xl lg:text-[10rem] font-bold text-white tracking-tighter leading-[1] md:leading-[0.85]">
-                                    {phrases[currentPhrase].main} <br />
-                                    <span className="relative inline-block mt-1 md:mt-2 pb-2 md:pb-4">
-                                        <span className="text-gradient animate-shimmer italic">
+                                <span className="block text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-800 tracking-tight mb-2">
+                                    {phrases[currentPhrase].lead}
+                                </span>
+                                <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 tracking-tight leading-[1.1] md:leading-[1.05]">
+                                    <span className="relative inline-block pb-2 md:pb-3">
+                                        <span className="text-gradient">
                                             {phrases[currentPhrase].accent}
                                         </span>
                                         <motion.div
                                             initial={{ scaleX: 0 }}
                                             animate={{ scaleX: 1 }}
-                                            className="absolute bottom-0 left-0 right-0 h-1 md:h-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500 rounded-full origin-left shadow-[0_0_20px_rgba(16,185,129,0.5)]"
+                                            transition={{ duration: 0.8, ease: "easeOut" }}
+                                            className="absolute bottom-1 left-0 right-0 h-1 md:h-1.5 bg-gradient-to-r from-red-600 via-rose-500 to-red-700 rounded-full origin-left shadow-[0_0_15px_rgba(220,38,38,0.35)]"
                                         />
                                     </span>
                                 </h1>
@@ -79,54 +104,77 @@ export function Hero() {
                     <motion.p
                         variants={{
                             initial: { opacity: 0, y: 20 },
-                            animate: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } }
+                            animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.3 } }
                         }}
-                        className="text-xl md:text-2xl text-white/50 mb-16 max-w-2xl mx-auto font-light leading-relaxed tracking-tight"
+                        className="text-base sm:text-lg md:text-2xl text-gray-600 mb-8 md:mb-12 max-w-3xl mx-auto font-normal leading-relaxed tracking-tight px-2"
                     >
-                        Franchissez la vitesse de la lumière avec des solutions web d'élite. Design radical, performance sans compromis.
+                        Développez votre activité avec des solutions numériques pérennes : <strong className="text-gray-900 font-semibold">sites web convertissants</strong>, infrastructure sécurisée <strong className="text-gray-900 font-semibold">Microsoft Azure</strong> et <strong className="text-gray-900 font-semibold">automatisations n8n</strong> sur-mesure.
                     </motion.p>
 
-                    {/* Buttons */}
+                    {/* Call to Actions */}
                     <motion.div
                         variants={{
-                            initial: { opacity: 0, scale: 0.9 },
+                            initial: { opacity: 0, scale: 0.95 },
                             animate: { opacity: 1, scale: 1, transition: PREMIUM_SPRING }
                         }}
-                        className="flex flex-col md:flex-row items-center justify-center gap-8"
+                        className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 mb-10 md:mb-16 w-full sm:w-auto"
                     >
                         <motion.a
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={{ scale: 1.03, y: -3 }}
+                            whileTap={{ scale: 0.97 }}
                             href="#pricing"
-                            className="group relative bg-emerald-500 text-white px-12 py-6 rounded-2xl font-bold text-xl transition-all flex items-center gap-4 overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.3)]"
+                            className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-7 sm:px-9 py-3.5 sm:py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg transition-all flex items-center justify-center gap-3 shadow-xl shadow-red-600/25 hover:shadow-2xl hover:shadow-red-600/35"
                         >
-                            <span className="relative z-10">Lancer la mission</span>
-                            <ArrowRight size={22} className="relative z-10 group-hover:translate-x-2 transition-transform duration-500" />
+                            <span>Démarrer un projet</span>
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </motion.a>
 
                         <motion.a
-                            whileHover={{ scale: 1.05, y: -5, backgroundColor: "rgba(255,255,255,0.08)" }}
-                            whileTap={{ scale: 0.95 }}
-                            href="mailto:witechagency@gmail.com"
-                            className="px-12 py-6 rounded-2xl font-bold text-xl text-white border border-white/10 flex items-center gap-4 backdrop-blur-xl transition-all"
+                            whileHover={{ scale: 1.03, y: -3, backgroundColor: "#fafafa" }}
+                            whileTap={{ scale: 0.97 }}
+                            href="#services"
+                            className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg text-gray-800 bg-white border border-gray-200 hover:border-gray-300 flex items-center justify-center gap-3 shadow-xs transition-all"
                         >
-                            <MessageCircle size={22} />
-                            Contacter la base
+                            <span>Découvrir l'expertise Azure</span>
                         </motion.a>
+                    </motion.div>
+
+                    {/* Trust ribbon / Core pillars */}
+                    <motion.div
+                        variants={{
+                            initial: { opacity: 0, y: 20 },
+                            animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.5 } }
+                        }}
+                        className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 w-full pt-6 md:pt-8 border-t border-gray-100"
+                    >
+                        <div className="flex items-center gap-2 sm:gap-3 justify-center p-2.5 sm:p-3 rounded-xl bg-white border border-gray-100 shadow-xs">
+                            <ShieldCheck className="text-red-600 shrink-0" size={18} />
+                            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-700 text-left">Sécurité & Azure</span>
+                        </div>
+                        <div className="flex items-center gap-2 sm:gap-3 justify-center p-2.5 sm:p-3 rounded-xl bg-white border border-gray-100 shadow-xs">
+                            <Globe className="text-red-600 shrink-0" size={18} />
+                            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-700 text-left">Sites Convertissants</span>
+                        </div>
+                        <div className="flex items-center gap-2 sm:gap-3 justify-center p-2.5 sm:p-3 rounded-xl bg-white border border-gray-100 shadow-xs">
+                            <Workflow className="text-red-600 shrink-0" size={18} />
+                            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-700 text-left">Automatisations n8n</span>
+                        </div>
+                        <div className="flex items-center gap-2 sm:gap-3 justify-center p-2.5 sm:p-3 rounded-xl bg-white border border-gray-100 shadow-xs">
+                            <Award className="text-red-600 shrink-0" size={18} />
+                            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-700 text-left">Solutions Sur-mesure</span>
+                        </div>
                     </motion.div>
                 </motion.div>
             </div>
 
-            {/* Premium Scroll Indicator */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/20">
-                <div className="w-px h-24 bg-gradient-to-b from-white/20 to-transparent relative overflow-hidden">
-                    <motion.div
-                        animate={{ y: ["-100%", "100%"] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent via-emerald-500 to-transparent"
-                    />
-                </div>
-            </div>
+            {/* Scroll Indicator */}
+            <a 
+                href="#services"
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-400 hover:text-red-600 transition-colors"
+                aria-label="Faire défiler"
+            >
+                <ChevronDown size={22} className="animate-bounce" />
+            </a>
         </section>
     );
 }

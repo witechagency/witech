@@ -16,7 +16,7 @@ export function MentionsLegales() {
                         <div className="space-y-2 text-gray-700">
                             <p><strong>Nom de l'entreprise :</strong> Wi'Tech</p>
                             <p><strong>Statut juridique :</strong> Entrepreneur individuel </p>
-                            <p><strong>Email :</strong> <a href="mailto:witechagency@gmail.com" className="text-blue-600 hover:underline">witechagency@gmail.com</a></p>
+                            <p><strong>Email :</strong> <a href="mailto:witechagency@gmail.com" className="text-red-600 hover:text-red-700 font-semibold underline underline-offset-4">witechagency@gmail.com</a></p>
                             <p><strong>Numéro SIRET :</strong> 93304618700029 </p>
                         </div>
                     </section>
@@ -24,7 +24,7 @@ export function MentionsLegales() {
                     <section className="mb-8">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Hébergement du site</h2>
                         <div className="space-y-2 text-gray-700">
-                            <p><strong>Hébergeur :</strong> [Hostinger / OVH / Render]</p>
+                            <p><strong>Hébergeur :</strong> Vercel Inc. / Microsoft Azure</p>
                             {/* <p><strong>Adresse :</strong> [À compléter]</p> */}
                         </div>
                     </section>
@@ -63,7 +63,7 @@ export function MentionsLegales() {
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Contact</h2>
                         <p className="text-gray-700 leading-relaxed">
                             Pour toute question concernant ces mentions légales, vous pouvez nous contacter à l'adresse :
-                            <a href="mailto:witechagency@gmail.com" className="text-blue-600 hover:underline ml-1">witechagency@gmail.com</a>
+                            <a href="mailto:witechagency@gmail.com" className="text-red-600 hover:text-red-700 font-semibold underline underline-offset-4 ml-1">witechagency@gmail.com</a>
                         </p>
                     </section>
                 </motion.div>

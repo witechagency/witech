@@ -44,31 +44,32 @@
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-[#10b981] via-[#14b8a6] to-[#d4af37] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-red-600 via-rose-600 to-red-800 bg-clip-text text-transparent;
   }
 
-  .text-gradient-cyan {
-    @apply bg-gradient-to-r from-[#06b6d4] to-[#10b981] bg-clip-text text-transparent;
+  .text-gradient-red {
+    @apply bg-gradient-to-r from-[#DC2626] to-[#991B1B] bg-clip-text text-transparent;
   }
 
   .text-gradient-vibrant {
-    @apply bg-gradient-to-br from-[#059669] via-[#0d9488] to-[#fbbf24] bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-red-600 via-rose-500 to-red-900 bg-clip-text text-transparent;
   }
 
-  .neon-glow {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(20, 184, 166, 0.1);
+  .neon-glow,
+  .red-glow {
+    box-shadow: 0 10px 30px -5px rgba(185, 28, 28, 0.25), 0 0 20px rgba(220, 38, 38, 0.15);
   }
 
-  .neon-glow-cyan {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), 0 0 40px rgba(16, 185, 129, 0.1);
+  .subtle-red-glow {
+    box-shadow: 0 4px 20px rgba(185, 28, 28, 0.08);
   }
 
   .premium-border {
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.06);
   }
 
   .dark .premium-border {
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
 
