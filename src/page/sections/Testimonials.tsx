@@ -16,33 +16,33 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
     {
-        author: "M. Obiang",
+        author: "Leans",
         role: "Fondateur",
         company: "Panthères Inside",
-        category: "Média Sportif & Haute Disponibilité",
-        quote: "Wi'Tech a su capturer l'essence de Panthères Inside. La plateforme est non seulement esthétique mais surtout extrêmement performante : nous absorbons des pics de trafic intenses pendant les matchs sans aucun ralentissement.",
-        impact: "+180% d'audience & 0 downtime",
-        initials: "PI",
+        category: "Média Sportif & Gestion Championnat",
+        quote: "Wi'Tech nous a livré bien plus qu'un média ultra-rapide capable d'absorber les pics de trafic des soirs de match : toute notre console d'administration en coulisses est interconnectée. Configuration d'API pour les mises à jour automatiques du championnat, tableau interactif pour la saisie des scores en temps réel et onboarding simplifié des nouveaux joueurs. C'est un gain de temps inestimable pour notre rédaction.",
+        impact: "Gestion admin 100% autonome & 0 downtime",
+        initials: "LN",
         accent: "from-red-600 to-rose-700"
     },
     {
         author: "Bikel Keumeka",
         role: "Directeur Général",
         company: "BK Engineering",
-        category: "Cloud Azure & Ingénierie",
-        quote: "L'intégration de notre infrastructure avec Microsoft Azure et les automatisations n8n ont transformé nos processus internes. Un travail d'ingénieur rigoureux, sécurisé et pensé pour durer.",
-        impact: "15h économisées par semaine",
+        category: "Site Web & Cloud Azure",
+        quote: "Wi'Tech a conçu pour nous un site web vitrine élégant et sur-mesure. Une présence digitale soignée et pérenne qui valorise parfaitement notre activité d'ingénierie.",
+        impact: "100% disponibilité",
         initials: "BK",
         accent: "from-rose-700 to-red-800"
     },
     {
-        author: "A. Nguema",
-        role: "Head of Digital",
+        author: "AKWE",
+        role: "Fondateur (Prototype revendu)",
         company: "Soko Commerce",
-        category: "E-Commerce & Conversion",
-        quote: "Une architecture de conversion redoutable. Le design inspire une confiance immédiate aux acheteurs et notre taux de transformation a bondi dès le premier mois après la mise en ligne.",
-        impact: "+42% de taux de conversion",
-        initials: "SC",
+        category: "Marketplace Hybride (Vinted x Leboncoin)",
+        quote: "Wi'Tech a matérialisé notre projet de marketplace hybride avec brio : le dynamisme des annonces géolocalisées façon Leboncoin allié à la fluidité des ventes d'articles de seconde main sécurisées à la Vinted. La plateforme prototype était si aboutie et ergonomique qu'elle a rapidement été revendue avec succès.",
+        impact: "Prototype hybride revendu",
+        initials: "AK",
         accent: "from-red-700 to-rose-900"
     },
     {
@@ -56,13 +56,13 @@ const testimonials: Testimonial[] = [
         accent: "from-rose-600 to-red-700"
     },
     {
-        author: "C. Mba",
-        role: "Rédacteur en Chef",
+        author: "Aimée Ndui",
+        role: "Fondatrice",
         company: "Vision du Monde",
-        category: "Presse & Média d'Actualités",
-        quote: "Une fluidité de lecture remarquable sur mobile et un score Google PageSpeed exemplaire. L'optimisation technique nous a permis d'accroître considérablement notre portée naturelle.",
-        impact: "Temps de chargement < 0.8s",
-        initials: "VM",
+        category: "Presse & CMS Sur-Mesure",
+        quote: "Nous voulions sortir définitivement des contraintes et de la lourdeur de WordPress. Wi'Tech nous a développé un média d'actualités ultra-fluide avec une interface de rédaction d'articles parfaitement taillée pour nos rédacteurs. La publication est rapide, intuitive et nos lecteurs adorent l'expérience de lecture.",
+        impact: "Alternative WordPress & publication fluide",
+        initials: "AN",
         accent: "from-red-600 to-rose-800"
     },
     {
@@ -94,7 +94,7 @@ export function Testimonials() {
                         Retours d'expérience
                     </motion.div>
 
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={SCROLL_VIEW_CONFIG}
@@ -145,7 +145,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Reviews Grid */}
-                <motion.div 
+                <motion.div
                     variants={STAGGER_CONTAINER(0.08)}
                     initial="initial"
                     whileInView="animate"

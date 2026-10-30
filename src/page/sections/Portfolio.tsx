@@ -6,16 +6,16 @@ import { cn } from '../../lib/utils';
 const projects = [
     {
         title: "Soko Commerce",
-        category: "E-commerce Platform",
+        category: "Marketplace Vinted x Leboncoin",
         image: "/sokocommerce.png",
         link: "#",
-        badge: "En projet",
+        badge: "Prototype revendu",
         className: "order-1",
         color: "from-green-600/20 to-emerald-600/20"
     },
     {
         title: "Panthères Inside",
-        category: "Sports Media",
+        category: "Média & Championnat Live",
         image: "/pantheresinside.png",
         link: "https://pantheresinside.com/",
         className: "order-2",
@@ -23,7 +23,7 @@ const projects = [
     },
     {
         title: "BK Engineering",
-        category: "Corporate Strategy",
+        category: "Site Web & Cloud Azure",
         image: "/Bikel.png",
         link: "https://bikelkeumeka.fr/",
         className: "order-3",
@@ -39,7 +39,7 @@ const projects = [
     },
     {
         title: "Vision du monde",
-        category: "News Platform",
+        category: "Média (Sortie WordPress)",
         image: "/VDM.png",
         link: "https://vision-du-monde.vercel.app/",
         className: "order-7 md:order-7",
@@ -103,16 +103,16 @@ export function Portfolio() {
                         <div className="flex-1">
                             <Quote className="text-red-600 mb-2 sm:mb-4" size={22} />
                             <p className="text-gray-800 text-xs sm:text-base md:text-lg font-medium leading-relaxed italic">
-                                "Wi'Tech a su capturer l'essence de Panthères Inside. La plateforme est non seulement esthétique mais surtout extrêmement performante, un vrai game-changer pour notre média sportif."
+                                "Wi'Tech nous a livré une plateforme ultra-performante et un back-office sur-mesure complet : API championnats, scores en direct et gestion des joueurs. Tout tourne sans faille."
                             </p>
                         </div>
                         <div className="flex items-center gap-3 sm:gap-4 mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-gray-50">
                             <div className="w-8 h-8 sm:w-10 sm:h-10 bg-red-50 rounded-full flex items-center justify-center font-bold text-red-600 text-xs shrink-0">
-                                PI
+                                LN
                             </div>
                             <div>
-                                <p className="font-bold text-gray-900 text-xs sm:text-sm">Fondateur</p>
-                                <p className="text-gray-400 text-[9px] sm:text-[10px] uppercase tracking-widest font-bold">Panthères Inside</p>
+                                <p className="font-bold text-gray-900 text-xs sm:text-sm">Leans</p>
+                                <p className="text-gray-400 text-[9px] sm:text-[10px] uppercase tracking-widest font-bold">Fondateur · Panthères Inside</p>
                             </div>
                         </div>
                     </motion.div>

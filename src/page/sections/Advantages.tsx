@@ -10,8 +10,8 @@ const advantages = [
         icon: ShieldCheck
     },
     {
-        title: "Expertise Azure & Microsoft",
-        description: "Une sécurisation cloud de haut niveau pour vos données et vos identités professionnelles aux normes du marché.",
+        title: "Automatisation, Data & BI",
+        description: "Une double expertise technique : flux Power Automate et chatbots Copilot d'un côté, Machine Learning, BI et valorisation de données brutes de l'autre.",
         icon: Cloud
     },
     {

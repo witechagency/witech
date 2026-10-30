@@ -13,7 +13,7 @@ export const services = [
     },
     {
         title: "Écosystème Microsoft & Copilot",
-        description: "Intégration avancée Power Automate, Power Apps et Copilot Studio pour décupler la productivité de vos équipes.",
+        description: "Intégration avancée Power Automate, Power Apps et chatbots Copilot Studio pour automatiser vos processus et décupler votre efficacité.",
         icon: Cpu
     },
     {
@@ -25,6 +25,7 @@ export const services = [
 
 export const navLinks = [
     { name: "Services", href: "/#services" },
+    { name: "Notre Vision", href: "/#vision" },
     { name: "Avantages", href: "/#advantages" },
     { name: "Processus", href: "/#process" },
     { name: "Avis Clients", href: "/#avis" },

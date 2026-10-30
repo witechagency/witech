@@ -1,6 +1,7 @@
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { Services } from './sections/Services';
+import { Vision } from './sections/Vision';
 import { Advantages } from './sections/Advantages';
 import { Process } from './sections/Process';
 import { Pricing } from './sections/Pricing';
@@ -18,6 +19,7 @@ export function Home() {
                 <main>
                     <Hero />
                     <Services />
+                    <Vision />
                     <Advantages />
                     <Process />
                     <Pricing />

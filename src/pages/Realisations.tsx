@@ -10,31 +10,31 @@ import { cn } from '../lib/utils';
 const projects = [
     {
         title: "Soko Commerce",
-        category: "Plateforme E-Commerce",
-        description: "Première marketplace locale réinventée : paiements sécurisés, fluidité d'achat sur mobile et back-office optimisé.",
+        category: "Marketplace Hybride (Seconde Main & Annonces)",
+        description: "Plateforme prototype hybride combinant la proximité des petites annonces géolocalisées façon Leboncoin et la fluidité des ventes d'articles de seconde main sécurisées façon Vinted. Prototype éprouvé puis revendu avec succès.",
         image: "/sokocommerce.png",
         link: "#",
-        badge: "En projet",
+        badge: "Prototype revendu",
         color: "from-green-600/20 to-emerald-600/20",
-        tags: ["E-Commerce", "En projet", "Mobile First"]
+        tags: ["Marketplace Hybride", "Vinted x Leboncoin", "Prototype Revendu", "Paiements Sécurisés"]
     },
     {
         title: "Panthères Inside",
-        category: "Média Sportif National",
-        description: "Portail d'actualités sportives haute fréquence capable d'absorber les pics de trafic lors des rencontres internationales.",
+        category: "Média Sportif & Gestion Championnat",
+        description: "Portail d'actualités sportives haute fréquence doublé d'une console d'administration complète : interfaçage d'APIs pour la mise à jour des classements, tableau interactif de saisie des scores en direct et onboarding des joueurs.",
         image: "/pantheresinside.png",
         link: "https://pantheresinside.com/",
         color: "from-purple-600/20 to-pink-600/20",
-        tags: ["Média", "Haute Disponibilité", "Azure Hosting"]
+        tags: ["Média Sportif", "Back-Office Admin", "APIs & Live Scores", "Azure Hosting"]
     },
     {
         title: "BK Engineering",
         category: "Cabinet d'Ingénierie & Stratégie",
-        description: "Plateforme institutionnelle avec présentation de portefeuille, intégration cloud Microsoft et automatisation de formulaires.",
+        description: "Site web institutionnel sur-mesure pour la présentation des activités et projets, avec hébergement sécurisé et haute disponibilité sur Microsoft Azure.",
         image: "/Bikel.png",
         link: "https://bikelkeumeka.fr/",
         color: "from-blue-600/20 to-cyan-600/20",
-        tags: ["Corporate", "Cloud Azure", "n8n"]
+        tags: ["Site Web Vitrine", "Microsoft Azure", "Haute Sécurité"]
     },
     {
         title: "KTM Transport",
@@ -48,11 +48,11 @@ const projects = [
     {
         title: "Vision du Monde",
         category: "Presse & Média d'Actualités",
-        description: "Site d'actualités généralistes et d'analyses avec chargement instantané (< 0.8s) et expérience de lecture épurée.",
+        description: "Alternative sur-mesure à WordPress : plateforme d'actualités avec expérience de lecture ultra-fluide (< 0.8s) et console de rédaction d'articles optimisée pour l'équipe éditoriale.",
         image: "/VDM.png",
         link: "https://vision-du-monde.vercel.app/",
         color: "from-indigo-600/20 to-blue-600/20",
-        tags: ["Média", "SEO Avancé", "Performance"]
+        tags: ["Presse & Média", "Sortie WordPress", "Interface Rédaction", "Performance"]
     },
     {
         title: "Wi'Tech",
