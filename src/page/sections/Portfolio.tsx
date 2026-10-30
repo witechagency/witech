@@ -33,7 +33,7 @@ const projects = [
         title: "KTM Transport",
         category: "Logistics",
         image: "/KTM.png",
-        link: "https://site-katako-ci7k.vercel.app/",
+        link: "https://katakotransportmessagerie.com/",
         className: "order-4 md:order-6",
         color: "from-orange-600/20 to-red-600/20"
     },
