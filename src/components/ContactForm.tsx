@@ -64,7 +64,10 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                 }),
             });
 
-            if (!mailRes.ok) throw new Error('Erreur envoi mail');
+            if (!mailRes.ok) {
+                const errData = await mailRes.json().catch(() => ({}));
+                throw new Error(errData.error || `Erreur envoi mail (HTTP ${mailRes.status})`);
+            }
 
             setShowSuccess(true);
             

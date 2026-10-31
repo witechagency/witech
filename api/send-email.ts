@@ -1,7 +1,5 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const VALID_PACKS = new Set([
     'Site Premium',
     'Accompagnement Sur-mesure',
@@ -29,7 +27,14 @@ export default async function handler(req: any, res: any) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const body = req.body ?? {};
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+        console.error('RESEND_API_KEY manquante dans les variables d’environnement Vercel');
+        return res.status(500).json({ error: 'Configuration serveur : RESEND_API_KEY manquante sur Vercel' });
+    }
+
+    const resend = new Resend(apiKey);
+    const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body ?? {});
 
     // Anti-robots : honeypot rempli ou soumission en moins de 3 secondes → 200 silencieux
     if (body.website) {
@@ -63,7 +68,7 @@ export default async function handler(req: any, res: any) {
 
     try {
         // 1️⃣ Notification interne Wi'Tech
-        await resend.emails.send({
+        const internal = await resend.emails.send({
             from: "Wi'Tech <contact@witechagency.com>",
             to: ['contact@witechagency.com'],
             replyTo: email,
@@ -83,8 +88,13 @@ export default async function handler(req: any, res: any) {
             text: `Nouvelle demande\nPack : ${pack}\nNom : ${nom}\nEntreprise : ${entreprise}\nTéléphone : ${numero}\nEmail : ${email}\n`,
         });
 
+        if (internal.error) {
+            console.error('Resend internal email error:', internal.error);
+            return res.status(500).json({ error: `Resend: ${internal.error.message || internal.error.name}` });
+        }
+
         // 2️⃣ Accusé de réception au prospect (aucun texte libre repris)
-        await resend.emails.send({
+        const reply = await resend.emails.send({
             from: "Wi'Tech <contact@witechagency.com>",
             to: [email],
             subject: "Votre demande a bien été reçue — Wi'Tech",
@@ -103,9 +113,13 @@ export default async function handler(req: any, res: any) {
             text: `Bonjour,\n\nNous avons bien reçu votre demande concernant ${pack}.\nNous revenons vers vous sous 24 h ouvrées.\n\nEn attendant, vous pouvez consulter nos réalisations : https://www.witechagency.com/realisations\n\nL'équipe Wi'Tech\nhttps://www.witechagency.com\n`,
         });
 
+        if (reply.error) {
+            console.error('Resend auto-reply error:', reply.error);
+        }
+
         return res.status(200).json({ success: true });
-    } catch (error) {
-        console.error('Resend error:', error);
-        return res.status(500).json({ error: "Erreur lors de l'envoi du mail" });
+    } catch (error: any) {
+        console.error('Resend exception:', error);
+        return res.status(500).json({ error: error?.message || "Erreur lors de l'envoi du mail" });
     }
 }
