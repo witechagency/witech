@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
 /* Police Outfit auto-hébergée (plus de requête Google Fonts) */
-@import "@fontsource/outfit/300.css";
-@import "@fontsource/outfit/400.css";
-@import "@fontsource/outfit/700.css";
 
 @theme {
   --color-background: hsl(0 0% 100%);
@@ -127,3 +124,19 @@ html.lenis {
   }
 }
 
+
+/* Mise en forme des articles du blog */
+.prose-witech { font-size: 1.125rem; line-height: 1.8; color: #374151; }
+.prose-witech h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin: 2.5rem 0 1rem; }
+.prose-witech h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin: 2rem 0 0.75rem; }
+.prose-witech p { margin: 0 0 1.25rem; }
+.prose-witech ul, .prose-witech ol { margin: 0 0 1.25rem 1.5rem; }
+.prose-witech ul { list-style: disc; }
+.prose-witech ol { list-style: decimal; }
+.prose-witech li { margin-bottom: 0.5rem; }
+.prose-witech a { color: #dc2626; text-decoration: underline; }
+.prose-witech strong { color: #111827; }
+.prose-witech blockquote { border-left: 4px solid #dc2626; padding-left: 1rem; font-style: italic; margin: 1.5rem 0; }
+.prose-witech table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; }
+.prose-witech th, .prose-witech td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; text-align: left; }
+.prose-witech code { background: #f3f4f6; padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-size: 0.95em; }

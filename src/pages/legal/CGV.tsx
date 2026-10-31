@@ -1,7 +1,9 @@
+import { staticSeo, useSeo } from '../../lib/seo';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 export function CGV() {
+    useSeo(staticSeo('/cgv'));
     return (
         <div className="min-h-screen bg-gray-50 pt-24 pb-16">
             <div className="max-w-4xl mx-auto px-6">
@@ -29,7 +31,7 @@ export function CGV() {
                         <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
                             <li><strong>Ingénierie & Création Web :</strong> Conception de sites internet convertissants, plateformes e-commerce et applications web modernes et éco-conçues.</li>
                             <li><strong>Cloud & Sécurité Microsoft Azure :</strong> Architecture, déploiement d'infrastructures sécurisées, gouvernance cloud et conformité.</li>
-                            <li><strong>Automatisations & Intégrations :</strong> Développement de workflows d'automatisation (n8n, Power Automate), intégration d'agents intelligents et interfaçage d'APIs.</li>
+                            <li><strong>Automatisations & Intégrations :</strong> Développement de workflows d'automatisation sur-mesure (API, Power Automate, n8n, scripts dédiés) et intégration d'agents intelligents.</li>
                             <li><strong>Infogérance & Maintien Opérationnel :</strong> Mises à jour techniques, monitoring proactif, sauvegardes et support technique.</li>
                         </ul>
                     </section>

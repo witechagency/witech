@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { navLinks } from '../lib/constant';
+import { getServiceMenu } from '../lib/services-menu';
 import { PREMIUM_SPRING } from '../lib/framer-configs';
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const publishedServices = getServiceMenu();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,13 +49,38 @@ export function Header() {
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center gap-10">
                         {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="text-sm font-semibold tracking-wide text-gray-600 hover:text-red-600 transition-colors"
-                            >
-                                {link.name}
-                            </a>
+                            link.name === "Services" && publishedServices.length > 0 ? (
+                                <div key={link.name} className="relative group">
+                                    <a
+                                        href={publishedServices[0].path}
+                                        className="text-sm font-semibold tracking-wide text-gray-600 hover:text-red-600 transition-colors inline-flex items-center gap-1"
+                                    >
+                                        {link.name}
+                                        <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
+                                    </a>
+                                    <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 pt-3 z-50">
+                                        <div className="w-72 bg-white rounded-2xl border border-gray-100 shadow-xl p-2 flex flex-col gap-1">
+                                            {publishedServices.map((s) => (
+                                                <a
+                                                    key={s.slug}
+                                                    href={s.path}
+                                                    className="px-4 py-2.5 rounded-xl text-sm font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                                                >
+                                                    {s.label}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-sm font-semibold tracking-wide text-gray-600 hover:text-red-600 transition-colors"
+                                >
+                                    {link.name}
+                                </a>
+                            )
                         ))}
                         <a
                             href="/#pricing"
@@ -85,14 +112,29 @@ export function Header() {
                     >
                         <nav className="flex flex-col gap-6">
                             {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-lg font-bold tracking-tight text-gray-900 hover:text-red-600 transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    {link.name}
-                                </a>
+                                <div key={link.name} className="flex flex-col gap-2">
+                                    <a
+                                        href={link.name === "Services" && publishedServices.length > 0 ? publishedServices[0].path : link.href}
+                                        className="text-lg font-bold tracking-tight text-gray-900 hover:text-red-600 transition-colors"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        {link.name}
+                                    </a>
+                                    {link.name === "Services" && publishedServices.length > 0 && (
+                                        <div className="pl-4 flex flex-col gap-2 border-l-2 border-red-100">
+                                            {publishedServices.map((s) => (
+                                                <a
+                                                    key={s.slug}
+                                                    href={s.path}
+                                                    className="text-sm font-medium text-gray-600 hover:text-red-600 transition-colors"
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                >
+                                                    {s.label}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
                             ))}
                             <a
                                 href="/#pricing"

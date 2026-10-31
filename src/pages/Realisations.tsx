@@ -1,3 +1,4 @@
+import { staticSeo, useSeo } from '../lib/seo';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowLeft, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -58,7 +59,7 @@ const projects = [
         title: "Wi'Tech",
         category: "Agence Web & Cloud B2B",
         description: "Notre propre vitrine nouvelle génération conçue avec React, Tailwind 4, animations Framer Motion et hébergement Azure.",
-        image: "/Witech.png",
+        image: "/witech-logo.svg",
         link: "https://witechagency.com/",
         color: "from-red-600/20 to-rose-600/20",
         tags: ["Agence", "D.A Rouge & Blanc", "Azure"]
@@ -66,6 +67,7 @@ const projects = [
 ];
 
 export function Realisations() {
+    useSeo(staticSeo('/realisations'));
     return (
         <div className="min-h-screen bg-[#F9F7F2] text-gray-900">
             <Header />

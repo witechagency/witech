@@ -17,8 +17,8 @@ export const services = [
         icon: Cpu
     },
     {
-        title: "Automatisations & n8n",
-        description: "Connexion de vos outils métiers (CRM, facturation, emails) et automatisation de vos processus répétitifs.",
+        title: "Automatisations & Intégrations",
+        description: "Connexion de vos outils métiers (CRM, facturation, emails, API) et automatisation sur-mesure de vos processus répétitifs.",
         icon: Workflow
     }
 ];
@@ -30,6 +30,7 @@ export const navLinks = [
     { name: "Processus", href: "/#process" },
     { name: "Avis Clients", href: "/#avis" },
     { name: "Réalisations", href: "/realisations" },
+    { name: "Blog", href: "/blog" },
 ];
 
 

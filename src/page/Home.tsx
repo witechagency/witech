@@ -1,3 +1,4 @@
+import { staticSeo, useSeo } from '../lib/seo';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { Services } from './sections/Services';
@@ -12,6 +13,7 @@ import { Technologies } from './sections/Technologies';
 import { SmoothScroll } from '../components/SmoothScroll';
 
 export function Home() {
+    useSeo(staticSeo('/'));
     return (
         <SmoothScroll>
             <div className="min-h-screen">

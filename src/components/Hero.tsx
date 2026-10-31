@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 const phrases = [
     { lead: "Sites web convertissants", accent: "100% sur-mesure." },
     { lead: "Cloud & Cybersécurité", accent: "Microsoft & Azure." },
-    { lead: "Automatisation de vos flux", accent: "propulsée par n8n." }
+    { lead: "Automatisation de vos flux", accent: "et intégration d'outils." }
 ];
 
 export function Hero() {
@@ -54,7 +54,7 @@ export function Hero() {
                             Solutions 100% sur-mesure
                         </span>
                         <span className="bg-[#991B1B] text-white text-[10px] sm:text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-xs tracking-wide">
-                            Azure, Sécurité & n8n
+                            Azure, Sécurité & Automatisations
                         </span>
                     </motion.div>
 
@@ -71,7 +71,9 @@ export function Hero() {
 
                     {/* Headline with Rotating Text */}
                     <div className="mb-6 md:mb-8 min-h-[170px] sm:min-h-[220px] md:min-h-[260px] flex flex-col items-center justify-center">
-                        <AnimatePresence mode="wait">
+                        {/* initial={false} : la 1re phrase (et le h1) est visible dès le premier affichage (HTML pré-rendu, SEO, LCP).
+                            Les phrases suivantes gardent leur animation d'entrée/sortie. */}
+                        <AnimatePresence mode="wait" initial={false}>
                             <motion.div
                                 key={currentPhrase}
                                 initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
@@ -100,15 +102,15 @@ export function Hero() {
                         </AnimatePresence>
                     </div>
 
-                    {/* Subtitle */}
+                    {/* Subtitle : visible dès le premier affichage (pas d'opacity 0 au départ), seul un léger glissement */}
                     <motion.p
                         variants={{
-                            initial: { opacity: 0, y: 20 },
-                            animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.3 } }
+                            initial: { y: 12 },
+                            animate: { y: 0, transition: { duration: 0.8, delay: 0.3 } }
                         }}
                         className="text-base sm:text-lg md:text-2xl text-gray-600 mb-8 md:mb-12 max-w-3xl mx-auto font-normal leading-relaxed tracking-tight px-2"
                     >
-                        Développez votre activité avec des solutions numériques pérennes : <strong className="text-gray-900 font-semibold">sites web convertissants</strong>, infrastructure sécurisée <strong className="text-gray-900 font-semibold">Microsoft Azure</strong> et <strong className="text-gray-900 font-semibold">automatisations n8n</strong> sur-mesure.
+                        Développez votre activité avec des solutions numériques pérennes : <strong className="text-gray-900 font-semibold">sites web convertissants</strong>, infrastructure sécurisée <strong className="text-gray-900 font-semibold">Microsoft Azure</strong> et <strong className="text-gray-900 font-semibold">automatisations métier</strong> sur-mesure.
                     </motion.p>
 
                     {/* Call to Actions */}
@@ -157,7 +159,7 @@ export function Hero() {
                         </div>
                         <div className="flex items-center gap-2 sm:gap-3 justify-center p-2.5 sm:p-3 rounded-xl bg-white border border-gray-100 shadow-xs">
                             <Workflow className="text-red-600 shrink-0" size={18} />
-                            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-700 text-left">Automatisations n8n</span>
+                            <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-700 text-left">Automatisations Métier</span>
                         </div>
                         <div className="flex items-center gap-2 sm:gap-3 justify-center p-2.5 sm:p-3 rounded-xl bg-white border border-gray-100 shadow-xs">
                             <Award className="text-red-600 shrink-0" size={18} />

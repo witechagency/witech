@@ -116,7 +116,7 @@ export function Pricing() {
                             {[
                                 { title: "100% Propriétaire", desc: "Code sur-mesure & sans dépendance", icon: ShieldCheck },
                                 { title: "Cloud Microsoft", desc: "Hébergement Azure souverain & rapide", icon: Cloud },
-                                { title: "Flux n8n & IA", desc: "Automatisations métiers intégrées", icon: Zap }
+                                { title: "Flux & IA", desc: "Automatisations métiers intégrées", icon: Zap }
                             ].map((pillar, i) => {
                                 const IconComponent = pillar.icon;
                                 return (

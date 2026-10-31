@@ -23,9 +23,9 @@ const projects = [
     },
     {
         title: "BK Engineering",
-        category: "Site Web & Cloud Azure",
+        category: "Ingénierie & Automatisation",
         image: "/Bikel.png",
-        link: "https://bikelkeumeka.fr/",
+        link: "https://bkengineering.fr/",
         className: "order-3",
         color: "from-blue-600/20 to-cyan-600/20"
     },
@@ -33,7 +33,7 @@ const projects = [
         title: "KTM Transport",
         category: "Logistics",
         image: "/KTM.png",
-        link: "https://katakotransportmessagerie.com/",
+        link: "https://site-katako-ci7k.vercel.app/",
         className: "order-4 md:order-6",
         color: "from-orange-600/20 to-red-600/20"
     },
@@ -48,7 +48,7 @@ const projects = [
     {
         title: "Wi'Tech",
         category: "Agence Web",
-        image: "/Witech.png",
+        image: "/witech-logo.svg",
         link: "https://witechagency.com/",
         className: "order-8 md:order-8",
         color: "from-yellow-600/20 to-orange-600/20"
@@ -60,7 +60,7 @@ export function Portfolio() {
         <section id="portfolio" className="py-16 md:py-32 bg-[#F9F7F2] relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="text-center mb-10 md:mb-24">
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={SCROLL_VIEW_CONFIG}
@@ -80,7 +80,7 @@ export function Portfolio() {
                     </motion.p>
                 </div>
 
-                <motion.div 
+                <motion.div
                     variants={STAGGER_CONTAINER(0.05)}
                     initial="initial"
                     whileInView="animate"
@@ -93,7 +93,7 @@ export function Portfolio() {
                     <ProjectCard project={projects[2]} />
 
                     {/* Row 2: Testimonial + Wide Logo */}
-                    <motion.div 
+                    <motion.div
                         variants={{
                             initial: { opacity: 0, scale: 0.9 },
                             animate: { opacity: 1, scale: 1, transition: PREMIUM_SPRING }
@@ -117,7 +117,7 @@ export function Portfolio() {
                         </div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         variants={{
                             initial: { opacity: 0, scale: 0.9 },
                             animate: { opacity: 1, scale: 1, transition: PREMIUM_SPRING }
@@ -126,7 +126,7 @@ export function Portfolio() {
                     >
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                         <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
-                        
+
                         <div className="text-center relative z-10 flex flex-col items-center">
                             <div className="flex items-center gap-2 sm:gap-4">
                                 <img src="/witech-logo.svg" alt="Wi'Tech Logo" className="w-8 h-8 sm:w-14 sm:h-14 md:w-20 md:h-20 drop-shadow-md" />
@@ -190,7 +190,7 @@ function ProjectCard({ project }: { project: any }) {
                     </span>
                 </div>
             )}
-            
+
             {/* Dégradé sombre uniquement en bas pour mettre en valeur les libellés */}
             <div className="absolute inset-x-0 bottom-0 h-14 sm:h-20 md:h-24 bg-gradient-to-t from-black/85 via-black/35 to-transparent rounded-b-2xl md:rounded-b-[2.5rem] pointer-events-none" />
 

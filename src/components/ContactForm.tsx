@@ -1,6 +1,6 @@
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from "../lib/supabase";
 
 interface ContactFormProps {
@@ -16,11 +16,23 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
         entreprise: "",
         numero: "",
         email: "",
+        website: "",
     });
+    const [openedAt, setOpenedAt] = useState<number>(0);
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            setOpenedAt(Date.now());
+        }
+    }, [isOpen]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (formData.website) {
+            setShowSuccess(true);
+            return;
+        }
         setLoading(true);
 
         try {
@@ -47,6 +59,8 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                     numero: formData.numero,
                     email: formData.email,
                     pack: packName,
+                    website: formData.website,
+                    openedAt,
                 }),
             });
 
@@ -55,7 +69,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
             setShowSuccess(true);
             
             // Reset form
-            setFormData({ nom: "", entreprise: "", numero: "", email: "" });
+            setFormData({ nom: "", entreprise: "", numero: "", email: "", website: "" });
             
         } catch (err) {
             console.error(err);
@@ -113,6 +127,16 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
 
                             {/* Form */}
                             <form onSubmit={handleSubmit} className="space-y-4">
+                                <input
+                                    type="text"
+                                    name="website"
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                    aria-hidden="true"
+                                    value={formData.website}
+                                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                                    className="hidden"
+                                />
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">
                                         Nom complet *
@@ -120,6 +144,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                     <input
                                         type="text"
                                         required
+                                        maxLength={100}
                                         value={formData.nom}
                                         onChange={(e) =>
                                             setFormData({ ...formData, nom: e.target.value })
@@ -136,6 +161,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                     <input
                                         type="text"
                                         required
+                                        maxLength={100}
                                         value={formData.entreprise}
                                         onChange={(e) =>
                                             setFormData({ ...formData, entreprise: e.target.value })
@@ -152,6 +178,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                     <input
                                         type="tel"
                                         required
+                                        maxLength={100}
                                         value={formData.numero}
                                         onChange={(e) =>
                                             setFormData({ ...formData, numero: e.target.value })
@@ -168,6 +195,7 @@ export function ContactForm({ isOpen, onClose, packName }: ContactFormProps) {
                                     <input
                                         type="email"
                                         required
+                                        maxLength={100}
                                         value={formData.email}
                                         onChange={(e) =>
                                             setFormData({ ...formData, email: e.target.value })

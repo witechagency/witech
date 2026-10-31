@@ -1,6 +1,8 @@
+import { staticSeo, useSeo } from '../../lib/seo';
 import { motion } from 'framer-motion';
 
 export function Confidentialite() {
+    useSeo(staticSeo('/confidentialite'));
     return (
         <div className="min-h-screen bg-gray-50 pt-24 pb-16">
             <div className="max-w-4xl mx-auto px-6">
@@ -97,8 +99,8 @@ export function Confidentialite() {
                         </p>
                         <p className="text-gray-700">
                             <strong>Email :</strong>{' '}
-                            <a href="mailto:witechagency@gmail.com" className="text-red-600 hover:text-red-700 font-semibold underline underline-offset-4">
-                                witechagency@gmail.com
+                            <a href="mailto:contact@witechagency.com" className="text-red-600 hover:text-red-700 font-semibold underline underline-offset-4">
+                                contact@witechagency.com
                             </a>
                         </p>
                         <p className="text-gray-700 leading-relaxed mt-4 text-sm text-gray-500">
