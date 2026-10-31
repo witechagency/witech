@@ -1,7 +1,17 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './page/Home';
 import { NotFound } from './pages/NotFound';
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [pathname, hash]);
+  return null;
+}
 
 // Lazy load des pages secondaires → ne charge que si l'utilisateur y accède
 const MentionsLegales = lazy(() => import('./pages/legal/MentionsLegales').then(m => ({ default: m.MentionsLegales })));
@@ -19,6 +29,7 @@ const LocalNantesPage = lazy(() => import('./pages/services/ServicePage').then(m
 export function AppRoutes() {
   return (
     <Suspense fallback={null}>
+      <ScrollToTop />
       <Routes>
         <Route path="/"                 element={<Home />} />
         <Route path="/realisations"     element={<Realisations />} />
